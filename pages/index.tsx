@@ -1,16 +1,14 @@
-import React, {useEffect} from 'react'
-import type {NextPage} from 'next'
-import dynamic from 'next/dynamic'
-import Test from "../components/test";
+import React, { useEffect } from "react";
+import type { NextPage } from "next";
+import dynamic from "next/dynamic";
+import Carousel from "../components/carousel";
 
 const Home = () => {
-    console.log('hey');
-    
-    return (
-        <div>
-            <Test />
-        </div>
-    )
-}
+  return (
+    <div>
+      <Carousel />
+    </div>
+  );
+};
 
-export default Home
+export default Home;
