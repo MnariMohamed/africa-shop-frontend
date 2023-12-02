@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import type { NextPage } from "next";
-import dynamic from "next/dynamic";
+import React from "react";
 import Carousel from "../components/carousel";
 
 const Home = () => {

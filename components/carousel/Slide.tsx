@@ -12,8 +12,6 @@ interface Props {
 const Slide: React.FC<Props> = ({ title, description, bgImg, url }) => {
   const { t } = useLanguage();
 
-  console.log("testing reset har");
-
   return (
     <>
       <div

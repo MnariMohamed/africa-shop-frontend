@@ -13,7 +13,7 @@ const Carousel = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 4500,
     cssEase: "linear",
     nextArrow: <NextArrow to="next" />,
     prevArrow: <PrevArrow to="prev" />,
@@ -25,7 +25,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative mt-5">
       <Slider {...settings}>
         {sliderContent.map((slideContent) => {
           return <Slide key={slideContent.ID} {...slideContent} />;
