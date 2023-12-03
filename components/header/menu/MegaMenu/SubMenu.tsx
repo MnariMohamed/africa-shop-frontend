@@ -26,7 +26,7 @@ const SubMenu: React.FC<Props> = ({ subMenuItems }) => {
           <>
             <Link href={`/${activeMenuItemText}`}>
               <div
-                className="block rtl:ml-4 lrt:mr-4 text-[16px] "
+                className="block mr-4 text-[16px] "
                 onClick={() => dispatch(megaMenuActions.closeMegaMenu())}
               >
                 {t.seeAllProduct}
@@ -37,7 +37,7 @@ const SubMenu: React.FC<Props> = ({ subMenuItems }) => {
         ) : null}
       </div>
       <br />
-      <div className="relative grow md:columns-[188px] xl:columns-3 xl:max-w-4xl    ">
+      <div className="relative grow md:columns-[188px] xl:columns-3 xl:max-w-4xl">
         {subMenuItems && activeMenuItemText ? (
           <>
             {subMenuItems.map((menuTitle, index) => {
@@ -45,7 +45,7 @@ const SubMenu: React.FC<Props> = ({ subMenuItems }) => {
                 <div className="py-3" key={`${menuTitle}-${index}`}>
                   <Link href={`/${activeMenuItemText}/${menuTitle.title}`}>
                     <div
-                      className="block text-sm rtl:ml-10 ltr:mr-10 font-bold px-2 ltr:border-l-4 rtl:border-r-4 border-palette-primary rounded-sm hover:text-palette-primary transition-color duration-300"
+                      className="block text-sm mr-10 font-bold px-2 border-l-4 border-palette-tertiary rounded-sm hover:text-palette-primary transition-color duration-300"
                       onClick={() => dispatch(megaMenuActions.closeMegaMenu())}
                     >
                       {t[`${menuTitle.title}`]}
@@ -73,7 +73,7 @@ const SubMenu: React.FC<Props> = ({ subMenuItems }) => {
             })}
           </>
         ) : (
-          <p className="text-sm text-palette-mute absolute top-[45%] ltr:left-[30%] rtl:right-[30%]">
+          <p className="text-sm text-palette-mute absolute top-[45%] left-[30%]">
             {t.noProduct}
           </p>
         )}

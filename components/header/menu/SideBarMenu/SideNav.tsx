@@ -24,20 +24,20 @@ const SideNav = forwardRef<HTMLDivElement, Props>(({ state, onClose }, ref) => {
         } 
         ${
           state === "entering"
-            ? "ltr:animate-sidenavLTREntering rtl:animate-sidenavRTLEntering"
+            ? "animate-sidenavLTREntering"
             : state === "entered"
             ? "translate-x-0"
-            : "ltr:animate-sidenavLTRExit rtl:animate-sidenavRTLExit"
+            : "animate-sidenavLTRExit"
         }
         `}
     >
       <div
-        className={`absolute top-3 ltr:left-0 rtl:right-0 ltr:ml-[85%] rtl:mr-[85%]   text-4xl cursor-pointer `}
+        className={`absolute top-3 left-0 ml-[85%] text-4xl cursor-pointer `}
         onClick={onClose}
       >
         <IoClose />
       </div>
-      <div className="pt-5 pb-3 ltr:pl-4 rtl:pr-5" onClick={onClose}>
+      <div className="pt-5 pb-3 pl-4" onClick={onClose}>
         <Logo />
       </div>
       <hr />

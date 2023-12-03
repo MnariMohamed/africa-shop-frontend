@@ -27,9 +27,9 @@ const MegaMenu = () => {
       onMouseOver={showMegaMenuHandler}
       onMouseOut={closeMegaMenuHandler}
     >
-      <div className="flex items-center font-bold cursor-pointer">
+      <div className="flex items-center font-bold cursor-pointer border rounded-md border-slate-300">
         <GoGrabber style={{ fontSize: "2rem" }} className="text-white" />
-        <h3 className="ltr:ml-1 rtl:mr-1 text-white">{t.CategoryOfGoods}</h3>
+        <h3 className="ltr:ml-1 text-white mr-2">{t.CategoryOfGoods}</h3>
       </div>
 
       <Transition
@@ -43,7 +43,7 @@ const MegaMenu = () => {
           return (
             <div ref={nodeRef} className="z-[100]">
               <div
-                className={`fixed top-[8.2rem] inset-0 bg-gray-600/60
+                className={`fixed top-[6rem] inset-0 bg-gray-600/60
                 ${
                   state === "entering"
                     ? "animate-fadeEntering"
@@ -54,7 +54,7 @@ const MegaMenu = () => {
                 `}
                 onClick={closeMegaMenuHandler}
               ></div>
-              <div className="absolute top-full left-0 right-0 bg-palette-card z-[110] shadow-md rounded-br-lg rounded-bl-lg">
+              <div className="absolute top-full left-0 right-0 bg-palette-card z-[110] shadow-md rounded-br-lg rounded-bl-lg md:mr-4">
                 <MenusContainer />
               </div>
             </div>

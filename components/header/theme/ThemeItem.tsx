@@ -39,7 +39,7 @@ const ThemeItem: React.FC<Props> = ({ theme, Icon, currentTheme }) => {
           }}
         />
       </button>
-      <h4 className="md:hidden rtl:mr-3 ltr:ml-3">{t[`${theme}`]}</h4>
+      <h4 className="md:hidden ml-3">{t[`${theme}`]}</h4>
     </div>
   );
 };

@@ -4,10 +4,9 @@ import MegaMenu from "./MegaMenu";
 
 const index = () => {
   return (
-    <div className="hidden md:flex items-center flex-grow">
+    <div className="hidden md:flex items-center flex-grow pl-4">
       <MegaMenu />
-      {/*       <ExtraMenu />
-       */}{" "}
+      <ExtraMenu />
     </div>
   );
 };

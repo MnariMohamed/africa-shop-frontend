@@ -21,6 +21,7 @@ module.exports = {
         palette: {
           primary: withOpacity("--color-primary"),
           secondary: withOpacity("--color-secondary"),
+          tertiary: withOpacity("--color-tertiary"),
         },
       },
       textColor: {
@@ -35,6 +36,7 @@ module.exports = {
           fill: withOpacity("--color-bg"),
           card: withOpacity("--color-bg-side"),
           dark: withOpacity("--color-bg-dark"),
+          primaryBg: "var(--bg-primary)",
           digitalCategory: "var(--digital-category-bgc)",
           fashionCategory: "var(--fashion-category-bgc)",
           beautyCategory: "var( --beauty-category-bgc)",
@@ -45,7 +47,6 @@ module.exports = {
         },
       },
       fontFamily: {
-        farsi: "'iranyekan', 'IRANSans', 'Tahoma'",
         english: "'Poppins', 'Roboto', 'sans-serif'",
       },
       keyframes: {

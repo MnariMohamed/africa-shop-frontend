@@ -20,7 +20,10 @@ const fr: { [key: string]: string } = {
   categories: "Categories",
   seeAllProduct: "See All product in this category",
   offer: "Offers and Discounts",
-  bestSells: "The Best-Sells",
+  about: "QUI SOMMES-NOUS",
+  contact: "CONTACT",
+  brands: "MARQUES",
+  news: "ACTUALITÉS",
   mainMenu: "Main Menu",
   language: "Language: ",
   fr: "Français- Fr",
@@ -81,7 +84,7 @@ const fr: { [key: string]: string } = {
   sport: "Sport and Trip",
   stationery: "Books, Stationery and Art",
   noProduct:
-    "There are no products in this category yet! New products will be added soon.",
+    "Il n'y a pas encore de produits dans cette catégorie ! De nouveaux produits seront bientôt ajoutés.",
   digitalBT: "Have the best Experiences",
   digitalBD:
     "We provide the best Experience with the most popular Brands.  With a warranty of 18 months, you can be confident in your choice",
@@ -232,9 +235,8 @@ const fr: { [key: string]: string } = {
   signUp: "Sign Up",
   Invalid_email_or_password: "Invalid email or password",
   Email_already_exists: "Email already exists",
-  aboutLongText:
-    "The ZShop store template was written to consolidate my front-end knowledge, using technologies such as Nextjs, Typescript, React, Tailwindcss, etc. as a portfolio. I would like to thank CafeDX and engineer Seyed Mehdi Hasanpour for his support.",
-  aboutEnjoy: "I hope you enjoy watching and working with this template.",
+  aboutLongText: "About Us",
+  aboutEnjoy: "Love it or hate it",
   myName: "Kehyshow",
   cafeDX: "Work is meant to improve life, not the opposite.",
   productAddedToCartMsg: "Product added to cart successfully",

@@ -36,7 +36,7 @@ const ProductPrice: React.FC<Props> = ({
   return (
     <div>
       <div
-        className={`flex rtl:justify-end rtl:self-end ltr:self-start text-left mt-2`}
+        className={`flex self-start text-left mt-2`}
         style={{ justifyContent }}
       >
         {discount ? (
@@ -78,9 +78,7 @@ const ProductPrice: React.FC<Props> = ({
               className={`flex items-center ${textMainPriceSize} font-bold no-underline`}
               style={{ flexDirection }}
             >
-              <sup className="mr-1 rtl:block">
-                {locale === "en" ? "£" : "DH"}
-              </sup>
+              <sup className="mr-1">{locale === "en" ? "£" : "DH"}</sup>
               <span>
                 {locale === "en" ? gbpCurrencyFormat(price) : irPrice}
               </span>

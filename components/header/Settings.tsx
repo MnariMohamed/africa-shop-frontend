@@ -32,7 +32,7 @@ const Settings = () => {
             className="fixed inset-0 -z-1 bg-black/20"
             onClick={onCloseSettingBox}
           ></div>
-          <div className="absolute top-8 ltr:right-0 rtl:left-0 bg-palette-card shadow-md rounded-lg px-6 py-3 ">
+          <div className="absolute top-8 right-0 bg-palette-card shadow-md rounded-lg px-6 py-3 ">
             <Language />
             <hr className="my-1" />
             <Theme />

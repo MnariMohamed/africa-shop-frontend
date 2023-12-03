@@ -19,7 +19,7 @@ const Theme = () => {
   };
 
   return (
-    <div className="md:rtl:ml-1 md:ltr:ml-1 p-1">
+    <div className="md:ml-1 p-1">
       <div className="md:hidden">
         <h3>{t.theme}</h3>
         <div className="mt-2 ml-1 z-10">

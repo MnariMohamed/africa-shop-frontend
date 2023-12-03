@@ -7,11 +7,11 @@ const Logo = () => {
     <Link href="/">
       <div className="block md:flex items-center justify-center w-full flex-grow md:flex-grow-0">
         <Image
-          src="/images/logo2.png"
+          src="/images/logo.png"
           alt="zishop-logo"
           width={80}
           height={20}
-          className="cursor-pointer md:ltr:-mr-3"
+          className="cursor-pointer md:ltr:-ml-3 md:mr-10"
           style={{ objectFit: "cover" }}
         />
       </div>
