@@ -35,7 +35,7 @@ const Settings = () => {
           <div className="absolute top-8 right-0 bg-palette-card shadow-md rounded-lg px-6 py-3 ">
             <Language />
             <hr className="my-1" />
-            <Theme />
+            {/* <Theme /> */}
           </div>
         </>
       ) : null}

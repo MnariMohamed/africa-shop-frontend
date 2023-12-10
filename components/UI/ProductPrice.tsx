@@ -29,66 +29,48 @@ const ProductPrice: React.FC<Props> = ({
     : "text-md md:text-lg";
   const textDiscountPriceSize = isLargeSize
     ? "text-md md:text-xl"
-    : "text-[12px] md:text-md";
-  const justifyContent = isInSlider && locale === "fr" ? "flex-start" : "";
-  const flexDirection = isInSlider || locale === "en" ? "row" : "row-reverse";
+    : "text-[11px] md:text-md";
+  const justifyContent = isInSlider && locale === "fr" ? "flex-end" : "";
 
   return (
-    <div>
-      <div
-        className={`flex self-start text-left mt-2`}
-        style={{ justifyContent }}
-      >
-        {discount ? (
-          <div className="flex items-end flex-wrap" style={{ flexDirection }}>
-            <span className="flex flex-col">
-              <del
-                className={`text-rose-800 dark:text-rose-200 md:text-sm ${textDiscountPriceSize}`}
-              >
-                <sup className="mr-1">{locale === "en" ? "£" : ""}</sup>
-                {/* <sub className="ml-1 text-[10px]">
-                  {locale === "fa" ? "تومان" : ""}
-                </sub> */}
-                {locale === "en" ? gbpCurrencyFormat(price) : irPrice}
-              </del>
-              <ins
-                className={`font-bold self-end no-underline mt-1 ${textMainPriceSize}`}
-              >
-                <sup className="mr-1">{locale === "en" ? "£" : ""}</sup>
-                {/*  <sub className="ml-1 text-[10px]">
-                  {locale === "fa" ? "تومان" : ""}
-                </sub> */}
-                {locale === "en"
-                  ? gbpCurrencyFormat(discountPrice)
-                  : irDiscountPrice}
-              </ins>
-            </span>
-            {/*  <span
-              className="text-green-800 dark:text-green-200 ml-1 text-[12px] inline-block"
-              style={{ direction: "ltr" }}
-            >{`(-%${
-              locale === "en" ? discount : changeNumbersFormatEnToFa(discount!)
-            })`}</span> */}
-          </div>
-        ) : (
-          <div>
-            {isInSlider ? <div className="h-[1.4rem]"></div> : null}{" "}
-            {/* ☝slider cards (.slick-slide=>Slider component) are float and because of that, they don't accept height so, for making cards the same height, I have to do this hack*/}
-            <div
-              className={`flex items-center ${textMainPriceSize} font-bold no-underline`}
-              style={{ flexDirection }}
+    <div className="flex md:justify-end" style={{ justifyContent }}>
+      {discount ? (
+        <div className="flex flex-row">
+          <div className="flex items-center">
+            <ins
+              className={`font-bold self-end no-underline mt-1x mr-3 ${textMainPriceSize}`}
             >
-              <sup className="mr-1">{locale === "en" ? "£" : "DH"}</sup>
-              <span>
-                {locale === "en" ? gbpCurrencyFormat(price) : irPrice}
-              </span>
-              <sub className="ml-1 text-[10px]">
-                {locale === "fr" ? "" : ""}
-              </sub>
-            </div>
+              <sup className="mr-1">{locale === "fr" ? "DH" : ""}</sup>
+              {locale === "fr"
+                ? gbpCurrencyFormat(discountPrice)
+                : irDiscountPrice}
+            </ins>
+            <del
+              className={`text-rose-800 dark:text-rose-200 md:text-xs ${textDiscountPriceSize}`}
+            >
+              <sup className="mr-1">{locale === "fr" ? "DH" : ""}</sup>
+              {locale === "fr" ? gbpCurrencyFormat(price) : irPrice}
+            </del>
           </div>
-        )}
-      </div>
+          <span
+            className="text-green-800 dark:text-green-200 ml-1 text-[12px] inline-block"
+            style={{ direction: "ltr" }}
+          >{`(-%${discount})`}</span>
+        </div>
+      ) : (
+        <div>
+          {isInSlider ? <div className="h-[1.4rem]"></div> : null}{" "}
+          {/* ☝slider cards (.slick-slide=>Slider component) are float and because of that, they don't accept height so, for making cards the same height, I have to do this hack*/}
+          <div
+            className={`flex items-center ${textMainPriceSize} font-bold no-underline`}
+            style={{ flexDirection: "row" }}
+          >
+            <sup className="mr-1">{locale === "fr" ? "DH" : "DH"}</sup>
+            <span>{locale === "fr" ? gbpCurrencyFormat(price) : irPrice}</span>
+            <sub className="ml-1 text-[10px]">{locale === "fr" ? "" : ""}</sub>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

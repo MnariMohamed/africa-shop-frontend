@@ -38,7 +38,8 @@ export type TImage = {
 export interface IProduct {
   image: any;
   name: string;
-  slug: TSlug;
+  description: string;
+  slug?: TSlug;
   price: number;
   discount?: number;
   details?: IProductDetails[];
