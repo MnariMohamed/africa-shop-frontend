@@ -17,7 +17,7 @@ const FooterColumns = () => {
               {item.subtitles.map((subItem) => {
                 return (
                   <Link href={subItem.href} key={subItem.text}>
-                    <span className="text-sm text-cyan-50 px-4 py-2 hover:text-palette-base/100">
+                    <span className="text-sm text-cyan-50 px-4 py-2 hover:text-palette-primary">
                       {t[subItem.text]}
                     </span>
                   </Link>

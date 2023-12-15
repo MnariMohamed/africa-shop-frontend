@@ -9,14 +9,15 @@ const Footer = () => {
   const { t, locale } = useLanguage();
 
   return (
-    <footer className="mt-12 bg-palette-footerBgColor text-white">
+    <footer className="mt-12 bg-palette-footerBgColor text-white px-4">
       <div className="border-t-[1px] border-slate-500/30">
         <div className="flex flex-wrap py-4 md:py-8 md:px-4 w-full xl:max-w-[2100px] mx-auto">
           <FooterColumns />
           <SocialPart />
         </div>
       </div>
-      <div className="border-t-[1px] border-slate-500/30 text-center text-xs md:text-sm py-4">
+      <div className="w-full h-[1px] bg-gradient-to-r from-blue-600 to-rose-600"></div>
+      <div className="border-slate-500/30 text-center text-xs md:text-sm py-4">
         <div>
           {t.copyRight}
           <BsFillSuitHeartFill

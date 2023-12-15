@@ -6,11 +6,11 @@ export const footerContent = [
     title: "eShop",
     subtitles: [
       {
-        text: "aboutUs",
+        text: "about",
         href: "/about",
       },
       {
-        text: "contactUs",
+        text: "contact",
         href: "/contact",
       },
       {
@@ -18,7 +18,7 @@ export const footerContent = [
         href: "/blank",
       },
       {
-        text: "careerOpportunities",
+        text: "ourBrands",
         href: "/blank",
       },
     ],
