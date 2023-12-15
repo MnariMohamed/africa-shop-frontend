@@ -57,6 +57,7 @@ body {
   font-family: var(--font-family);
   background-color: rgb(var(--color-bg));
   color: rgb(var(--color-text-base));
+  overflow-x: hidden;
 }
 
 a {
@@ -188,14 +189,18 @@ a {
 
 /* input */
 
-input,
 select {
   font-family: inherit;
   color: inherit;
   font-size: inherit;
 }
 
-input:focus,
+input {
+  font-family: inherit;
+  display: block;
+  color: black;
+}
+
 select:focus {
   background-color: transparent;
 }
