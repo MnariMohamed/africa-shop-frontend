@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Menu from "./menu";
 import Logo from "./Logo";
@@ -11,7 +11,7 @@ const Theme = dynamic(() => import("./theme/Theme"), {
   ssr: false,
 });
 
-const index = () => {
+const Header = () => {
   return (
     <header className="md:fixed left-0 right-0 top-0 md:bg-palette-fill shadow-sm pt-4 z-[1000]">
       <div className="flex flex-col">
@@ -45,4 +45,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Header;
