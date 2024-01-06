@@ -235,7 +235,7 @@ const fr: { [key: string]: string } = {
   signUp: "Sign Up",
   Invalid_email_or_password: "Invalid email or password",
   Email_already_exists: "Email already exists",
-  aboutLongText: "About Us",
+  aboutTitle: "Nous connaître",
   aboutEnjoy: "Love it or hate it",
   myName: "Kehyshow",
   cafeDX: "Work is meant to improve life, not the opposite.",
