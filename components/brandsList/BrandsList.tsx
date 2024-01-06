@@ -9,7 +9,7 @@ const BrandsList = () => {
   const ArrowDirection = HiChevronRight;
   return (
     <div className="flex self-center flex-col my-4 md:my-8">
-      <SectionTitle title={"ourBrands"} />
+      <SectionTitle title={"ourBrands"} arrow />
       <div className="flex flex-wrap items-center justify-center md:justify-start">
         {brandContent.slice(0, 15).map(({ name, imgSrc }) => {
           return <BrandLgBox key={name} imageSrc={imgSrc} brandName={name} />;

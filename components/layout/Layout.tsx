@@ -7,6 +7,7 @@ import store from "../../store/index";
 import NextNProgress from "nextjs-progressbar";
 import { ToastContainer } from "react-toastify";
 import Footer from "../footer";
+import CatalogueDrawer from "../header/catalogMenu/Drawer";
 
 const Layout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return (

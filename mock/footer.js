@@ -40,23 +40,6 @@ export const footerContent = [
       },
     ],
   },
-  {
-    title: "shoppingGuide",
-    subtitles: [
-      {
-        text: "howToPlaceAnOrder",
-        href: "/blank",
-      },
-      {
-        text: "orderSubmissionProcedure",
-        href: "/blank",
-      },
-      {
-        text: "paymentMethods",
-        href: "/blank",
-      },
-    ],
-  },
 ];
 
 export const socialMedia = [

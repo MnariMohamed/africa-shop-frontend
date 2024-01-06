@@ -19,9 +19,9 @@ const Newest = () => {
 
   return (
     <div className="mx-auto my-4 md:my-8 flex flex-col xl:max-w-[2130px]">
-      <SectionTitle title={"newest"} />
+      <SectionTitle title={"newest"} arrow />
 
-      <div className="grid gap-4 md:gap-2 grid-cols-6 md:grid-cols-12 ">
+      <div className="grid gap-4 md:gap-2 grid-cols-6">
         {products
           ? products.slice(0, numProductToShow).map((product: IProduct) => {
               return <Card key={product.name} product={product} />;
