@@ -39,7 +39,7 @@ const SideNavContent = () => {
         })}
         <hr className="mt-6 mb-4 border-gray-200" />
       </div>
-      <h2 className="font-bold text-lg py-3 px-5">{t.CategoryOfGoods}</h2>
+      <h2 className="font-bold text-2xl py-3 px-5">{t.CategoryOfGoods}</h2>
       <MenuItems onClick={openNav} />
     </div>
   );

@@ -10,16 +10,30 @@ import {
   ListItemSuffix,
   Chip,
 } from "@material-tailwind/react";
+import { GoGrabber } from "react-icons/go";
+import { useDispatch } from "react-redux";
+import { megaMenuActions } from "@/store/megaMenu-slice";
 
 const CatalogueDrawer: React.FC = () => {
   const [open, setOpen] = React.useState(false);
   const openDrawer = () => setOpen(true);
-  const closeDrawer = () => setOpen(false);
+
+  const dispatch = useDispatch();
+  const closeDrawer = () => {
+    dispatch(megaMenuActions.closeMegaMenu());
+    setOpen(false);
+  };
 
   return (
     <React.Fragment>
-      <Button onClick={openDrawer} className="bg-transparent">
-        Catalogue
+      <Button
+        onClick={openDrawer}
+        className="bg-transparent flex flex-row items-center"
+      >
+        <GoGrabber style={{ fontSize: "1.2rem" }} className="text-white" />
+        <h3 className="text-sm font-bold leading-3 ml-1 text-white mr-2">
+          Catalogue
+        </h3>
       </Button>
       <Drawer open={open} onClose={closeDrawer}>
         <div className="mb-2 flex items-center justify-between p-4">

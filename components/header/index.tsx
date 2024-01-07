@@ -7,7 +7,7 @@ import SearchBar from "./SearchBar";
 import CartIcon from "../cart/CartIcon";
 import Language from "./language/Language";
 
-const Theme = dynamic(() => import("./theme/Theme"), {
+const UserBox = dynamic(() => import("./user"), {
   ssr: false,
 });
 
@@ -36,7 +36,7 @@ const Header = () => {
             <SearchBar />
           </div>
           <div className="ml-2 mr-2 sm:ml-4 flex items-center justify-between ">
-            {/* <UserBox /> */}
+            <UserBox />
             <CartIcon />
           </div>
         </div>
