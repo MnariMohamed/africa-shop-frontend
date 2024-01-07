@@ -8,15 +8,13 @@ interface SlideCardParams {
 const SlideCard: React.FC<SlideCardParams> = ({ title, desc }) => {
   return (
     <div className="relative mx-auto bg-white p-6 rounded-md shadow-md flex items-center">
-      {/* Blue Triangle in the top-right corner */}
       <div className="absolute top-0 right-0 w-[20%] h-[100%] border-t-8 border-r-8 border-palette-tertiary"></div>
-      {/* First Column */}
       <div className="flex-1 m-4">
         <div className="mb-4">
-          <h2 className="text-4xl font-bold mb-6">{title}</h2>
+          <h2 className="md:text-4xl text-xl font-bold mb-6">{title}</h2>
         </div>
         <div>
-          <p className="text-gray-600 my-4">{desc}</p>
+          <p className="text-gray-500 my-4 md:text-lg text-sm">{desc}</p>
         </div>
         <button
           type="button"
@@ -25,8 +23,6 @@ const SlideCard: React.FC<SlideCardParams> = ({ title, desc }) => {
           Plus d&apos;information
         </button>
       </div>
-
-      {/* Second Column */}
       <div className="ml-4">
         <Image
           className="object-contain rounded-md"
