@@ -4,11 +4,12 @@ import { brandContent } from "../../mock/brand";
 import Slider from "react-slick";
 import SectionTitle from "../UI/SectionTitle";
 const Brands = () => {
+  const slidesToScroll = brandContent.length;
   const settings = {
     infinite: true,
-    speed: 6000,
+    speed: 20000,
     slidesToShow: 8,
-    slidesToScroll: 4,
+    slidesToScroll: slidesToScroll,
     autoplay: true,
     autoplaySpeed: 8000,
     cssEase: "linear",
