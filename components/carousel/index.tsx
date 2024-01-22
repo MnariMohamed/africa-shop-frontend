@@ -7,6 +7,7 @@ import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi";
 
 const Carousel = () => {
   const settings = {
+    useTransform: true,
     dots: true,
     infinite: true,
     speed: 500,
@@ -14,7 +15,7 @@ const Carousel = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4500,
-    cssEase: "linear",
+    cssEase: "cubic-bezier(0.600, -0.280, 0.735, 0.045)",
     nextArrow: <NextArrow to="next" />,
     prevArrow: <PrevArrow to="prev" />,
     appendDots: (dots: string) => (

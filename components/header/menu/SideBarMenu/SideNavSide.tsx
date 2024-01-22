@@ -13,6 +13,7 @@ import { ISideNavBarRootState } from "../../../../lib/types/sidebar";
 import { useLanguage } from "../../../../hooks/useLanguage";
 import Link from "next/link";
 import { IActiveMenuItemRootState } from "../../../../lib/types/activeMenuItem";
+import { GoLinkExternal } from "react-icons/go";
 
 const SideNavSide = () => {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ const SideNavSide = () => {
   };
 
   const nodeRef = useRef<HTMLDivElement>(null);
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
 
   const BackArrow = HiOutlineArrowSmLeft;
 
@@ -56,7 +57,7 @@ const SideNavSide = () => {
             return (
               <div
                 ref={nodeRef}
-                className={`max-w-[380px] w-[90%] h-screen pb-4 fixed top-0 shadow-md z-[1010] bg-palette-card origin-left overflow-auto md:hidden left-0 
+                className={`max-w-[380px] w-[90%] h-screen pb-4 fixed top-0 shadow-md z-[1010] bg-palette-card origin-left overflow-auto left-0 
                 ${
                   state === "entering"
                     ? "animate-sidenavLTREntering"
@@ -67,25 +68,28 @@ const SideNavSide = () => {
                 `}
               >
                 <div
-                  className="flex items-center pt-4 pb-3 px-6 font-bold text-lg cursor-pointer"
+                  className="flex items-center justify-between pt-4 pb-3 px-6 cursor-pointer"
                   onClick={closeSidebar}
                 >
-                  <BackArrow style={{ fontSize: "1.5rem" }} />
-                  <h3 className="ml-2 py-1">{t.mainMenu}</h3>
+                  <div className="flex items-center">
+                    <BackArrow style={{ fontSize: "1.5rem" }} />
+                    <h3 className="ml-4 text-black font-bold text-lg">
+                      {t[activeMenuItemText]}
+                    </h3>
+                  </div>
+                  <Link
+                    href={`/${activeMenuItemText}`}
+                    className=""
+                    onClick={closeNavbar}
+                  >
+                    <GoLinkExternal
+                      style={{ fontSize: "1.2rem", color: "black" }}
+                    />
+                  </Link>
                 </div>
 
                 <hr className="mb-6" />
 
-                <div className=" pr-6 pb-6 mb-3 border-b-2 border-slate-400-600">
-                  <Link href={`/${activeMenuItemText}`}>
-                    <div className="flex items-center justify-between">
-                      <div className="font-bold ml-6" onClick={closeNavbar}>
-                        {t.seeAllProduct}
-                      </div>
-                      <HiChevronRight style={{ fontSize: "1.5rem" }} />
-                    </div>
-                  </Link>
-                </div>
                 {dropDownList.map((item) => {
                   return (
                     <div key={item.title}>

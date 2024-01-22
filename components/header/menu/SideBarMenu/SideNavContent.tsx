@@ -23,11 +23,11 @@ const SideNavContent = () => {
   };
   return (
     <div className="absolute w-full">
-      <div className="flex flex-col mt-3 pt-3 px-5 cursor-pointer">
+      <div className="flex flex-col mt-3 pt-3 px-5 cursor-pointer md:hidden">
         {extraMenu.map((menuItem) => {
           return (
             <div
-              className="flex items-center py-3 text-palette-mute "
+              className="flex items-center py-3 text-palette-mute"
               key={menuItem.title}
             >
               <menuItem.icon />
@@ -39,7 +39,10 @@ const SideNavContent = () => {
         })}
         <hr className="mt-6 mb-4 border-gray-200" />
       </div>
-      <h2 className="font-bold text-2xl py-3 px-5">{t.CategoryOfGoods}</h2>
+      <h2 className="font-bold text-xl text-black p-4 text-center md:hidden">
+        {t.CategoryOfGoods}
+      </h2>
+      {/* // Todo: we need to work starting with this ligne */}
       <MenuItems onClick={openNav} />
     </div>
   );

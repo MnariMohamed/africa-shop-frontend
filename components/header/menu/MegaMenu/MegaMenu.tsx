@@ -6,7 +6,6 @@ import { useLanguage } from "../../../../hooks/useLanguage";
 import { GoGrabber } from "react-icons/go";
 import MenusContainer from "./MenusContainer";
 import { IMegaMenuRootState } from "../../../../lib/types/megaMenu";
-import CatalogueDrawer from "../../catalogMenu/Drawer";
 
 const MegaMenu = () => {
   const nodeRef = useRef<HTMLDivElement>(null);
@@ -25,11 +24,9 @@ const MegaMenu = () => {
   return (
     <div className="flex items-center">
       <div
-        className="flex items-center font-bold cursor-pointer border rounded-md border-slate-300"
+        className="flex items-center font-bold cursor-pointer"
         onClick={showMegaMenuHandler}
-      >
-        <CatalogueDrawer />
-      </div>
+      ></div>
 
       <Transition
         nodeRef={nodeRef}

@@ -60,7 +60,7 @@ const fr: { [key: string]: string } = {
   powerBank: "Power Bank",
   speaker: "Bluetooth Speaker and wire",
   headphones: "Headphone, Headset and Hands free",
-  fashion: "Fashion and Clothes",
+  fashion: "Mode et Vêtements",
   women: "Women's Fashion",
   dress: "Dress",
   skirt: "Skirt",

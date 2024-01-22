@@ -11,7 +11,12 @@ const ExtraMenu = () => {
         return (
           <div className="flex items-center mx-4" key={menuItem.title}>
             <Link href={menuItem.href}>
-              <span>{t[`${menuItem.title}`]}</span>
+              <span
+                className="md:text-base font-bold"
+                style={{ fontWeight: "bolder" }}
+              >
+                {t[`${menuItem.title}`]}
+              </span>
             </Link>
           </div>
         );

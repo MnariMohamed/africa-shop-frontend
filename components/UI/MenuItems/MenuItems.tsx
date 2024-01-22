@@ -9,6 +9,7 @@ import { IDropDown } from "../../../lib/types/dropDown";
 import { useRouter } from "next/router";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { IActiveMenuItemRootState } from "../../../lib/types/activeMenuItem";
+import { GoLinkExternal } from "react-icons/go";
 
 interface Props {
   onClick?: (
@@ -24,7 +25,7 @@ interface Props {
 }
 
 const MenuItems: React.FC<Props> = (props) => {
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
   const route = useRouter();
   const dispatch = useDispatch();
   const { width } = useWindowDimensions();
@@ -43,17 +44,19 @@ const MenuItems: React.FC<Props> = (props) => {
     (state: IActiveMenuItemRootState) =>
       state.activeMenuItem.activeMenuItemIndex
   );
+
+  const firstData = menuItems.slice(0, 18);
   return (
-    <ul className="rounded-lg">
-      {menuItems.map((item, index) => {
-        return (
-          <li
-            className="py-3 md:py-3 transition-color duration-300 hover:text-palette-primary font-bold"
-            key={item.category}
-          >
-            {width <= 768 ? (
+    <div className="flex items-center flex-col">
+      <ul className="rounded-lg w-full pl-4">
+        {firstData.map((item, index) => {
+          return (
+            <li
+              className="py-3 md:py-2 transition-color duration-300 hover:text-palette-primary font-bold border-b-[0.5px] border-gray-700"
+              key={item.category}
+            >
               <div
-                className={`flex items-center mt-3 px-5  cursor-pointer text-sm ${
+                className={`flex items-center mt-3 px-5 cursor-pointer text-sm ${
                   index === activeMenuItemIndex ? "md:text-palette-primary" : ""
                 }`}
                 onClick={() =>
@@ -67,19 +70,35 @@ const MenuItems: React.FC<Props> = (props) => {
                   props.onMouseOver?.(item.productsGroup, index, item.category)
                 }
               >
-                <item.icon className="w-6 h-6 " />
-                <div
-                  className={`mx-4 grow ${
-                    !item.productsGroup ? "text-gray-400 font-normal" : ""
-                  }`}
-                >
-                  {t[item.category]}
+                <item.icon className="w-5 h-5" />
+                <div className="mx-4 grow">
+                  <span
+                    className={`text-black font-bold text-sm ${
+                      !item.productsGroup ? "text-gray-400" : ""
+                    } ${
+                      index === activeMenuItemIndex
+                        ? "md:text-palette-primary"
+                        : ""
+                    }`}
+                  >
+                    {t[item.category]}
+                  </span>
+                  {item.productsGroup && (
+                    <span className="text-slate-700 text-xs	font-light ml-2">
+                      {`(${item.productsGroup?.length})`}
+                    </span>
+                  )}
                 </div>
                 {item.productsGroup ? (
-                  <ArrowDirection style={{ fontSize: "1rem" }} />
+                  <div className="flex items-center">
+                    <GoLinkExternal
+                      style={{ fontSize: "1rem", marginRight: "0.5rem" }}
+                    />
+                    <ArrowDirection style={{ fontSize: "1rem" }} />
+                  </div>
                 ) : null}
               </div>
-            ) : (
+              {/* ) : (
               <Link href={`/${item.category}`}>
                 <div
                   className={`flex items-center mt-3 px-5  cursor-pointer text-sm ${
@@ -115,11 +134,15 @@ const MenuItems: React.FC<Props> = (props) => {
                   ) : null}
                 </div>
               </Link>
-            )}
-          </li>
-        );
-      })}
-    </ul>
+            )} */}
+            </li>
+          );
+        })}
+      </ul>
+      <button className="bg-transparent hover:bg-palette-tertiary text-palette-tertiary font-semibold hover:text-white py-2 px-4 border border-palette-tertiary hover:border-transparent rounded text-sm my-4">
+        Voyez tous
+      </button>
+    </div>
   );
 };
 

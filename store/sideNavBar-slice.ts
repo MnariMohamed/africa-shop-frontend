@@ -6,6 +6,7 @@ const initialState: ISideNavBar = {
   isSidebarOpen: false,
   isNavbarOpen: false,
   dropDownList: [],
+  category: "",
 };
 
 const sideNavBarSlice = createSlice({

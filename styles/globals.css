@@ -102,8 +102,7 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #a71b4a;
-  border-radius: 100vw;
+  background-color: #183884;
 }
 
 /* input */
