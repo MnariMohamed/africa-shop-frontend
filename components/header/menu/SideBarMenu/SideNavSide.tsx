@@ -60,7 +60,7 @@ const SideNavSide = () => {
   const { t } = useLanguage();
 
   // TODO: Change the calculation of the left position after adding nested drawer
-  const leftPosition = 50;
+  // const leftPosition = 50;
 
   return (
     <>
@@ -77,11 +77,7 @@ const SideNavSide = () => {
               <div
                 ref={nodeRef}
                 className={`max-w-[380px] w-[90%] h-screen pb-4 fixed top-0 shadow-md z-[1010] bg-palette-card overflow-auto 
-                ${
-                  isNextSideBarOpen
-                    ? `left-[${leftPosition}px]`
-                    : "left-[380px]"
-                }
+                ${isNextSideBarOpen ? "left-[50px]" : "left-[380px]"}
                 ${
                   state === "entering"
                     ? "animate-sidenavLTREntering"

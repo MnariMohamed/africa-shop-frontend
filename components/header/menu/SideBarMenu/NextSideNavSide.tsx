@@ -39,8 +39,7 @@ const SubCategoriesItems = () => {
   const { t } = useLanguage();
 
   // TODO: Change the calculation of the left position after adding nested drawer
-  const leftPosition = 760 - 380 + 50;
-
+  /*   const leftPosition = 760 - 380 + 50; */
   return (
     <>
       {nextSubCatList.length ? (
@@ -56,11 +55,7 @@ const SubCategoriesItems = () => {
               <div
                 ref={nodeRef}
                 className={`max-w-[380px] w-[90%] h-screen pb-4 fixed top-0 shadow-md z-[1012] bg-palette-card overflow-auto
-                ${
-                  isNextSideBarOpen
-                    ? `left-[${leftPosition}px]`
-                    : "left-[760px]"
-                } 
+                ${isNextSideBarOpen ? "left-[430px]" : "left-[760px]"} 
                 ${
                   state === "entering"
                     ? "animate-sidenavLTREntering"
