@@ -7,13 +7,13 @@ const Brands = () => {
   const slidesToScroll = brandContent.length;
   const settings = {
     infinite: true,
-    speed: 20000,
+    speed: 20000, // Set the speed to a lower value for slower sliding
     slidesToShow: 8,
     slidesToScroll: slidesToScroll,
     autoplay: true,
-    autoplaySpeed: 8000,
+    autoplaySpeed: 10000, // Adjust autoplay speed as needed
     cssEase: "linear",
-    swipeToSlide: true,
+    swipeToSlide: false,
     responsive: [
       {
         breakpoint: 1024,
@@ -38,6 +38,7 @@ const Brands = () => {
       },
     ],
   };
+
   return (
     <div className="md:p-1 my-2 mx-2 md:mx-0">
       <Slider {...settings}>

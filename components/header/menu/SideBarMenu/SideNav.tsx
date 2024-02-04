@@ -5,6 +5,11 @@ import { GoLinkExternal } from "react-icons/go";
 import SideNavContent from "./SideNavContent";
 import Logo from "../../Logo";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useSelector } from "react-redux";
+import { ISideNavBarRootState } from "@/lib/types/sidebar";
+import VerticalBar from "@/components/UI/MenuItems/VerticalBar";
+import { sideNavBarActions } from "@/store/sideNavBar-slice";
+import { useDispatch } from "react-redux";
 
 interface Props {
   state?: string;
@@ -15,6 +20,20 @@ interface Props {
 
 const SideNav = forwardRef<HTMLDivElement, Props>(({ state, onClose }, ref) => {
   const { t } = useLanguage();
+  const dispatch = useDispatch();
+
+  const isNextSideBarOpen = useSelector(
+    (state: ISideNavBarRootState) => state.sideNavBar.isNextSideBarOpen
+  );
+
+  // TODO: Change the behavior of the left close Vetical Bar after adding nested drawer
+  const onClick = () => {
+    dispatch(sideNavBarActions.closeNextSidebar());
+  };
+
+  if (isNextSideBarOpen) {
+    return <VerticalBar text={t.CategoryOfGoods} onClick={onClick}/>;
+  }
 
   return (
     <div

@@ -5,14 +5,14 @@ import { extraMenu } from "../../../../mock/menuItems";
 import { useDispatch } from "react-redux";
 import { sideNavBarActions } from "../../../../store/sideNavBar-slice";
 import { activeMenuItemActions } from "../../../../store/activeMenuItem-slice";
-import { IDropDown } from "../../../../lib/types/dropDown";
+import { ICategory } from "../../../../lib/types/subCategories";
 import MenuItems from "../../../UI/MenuItems/MenuItems";
 
 const SideNavContent = () => {
   const { t } = useLanguage();
   const dispatch = useDispatch();
   const openNav = (
-    sidebarSideContent: IDropDown[] = [],
+    sidebarSideContent: ICategory[] = [],
     activeItemName: string,
     activeItemIndex: number
   ) => {
@@ -28,11 +28,11 @@ const SideNavContent = () => {
           return (
             <div
               className="flex items-center py-3 text-palette-mute"
-              key={menuItem.title}
+              key={menuItem.category}
             >
               <menuItem.icon />
               <Link href={menuItem.href}>
-                <span className="mx-4">{t[`${menuItem.title}`]}</span>
+                <span className="mx-4">{t[`${menuItem.category}`]}</span>
               </Link>
             </div>
           );

@@ -1,55 +1,34 @@
 import React, { useRef } from "react";
 import { Transition } from "react-transition-group";
-import { HiChevronRight, HiChevronLeft } from "react-icons/hi";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
-import { sideNavBarActions } from "../../../../store/sideNavBar-slice";
-import { ISideNavBarRootState } from "../../../../lib/types/sidebar";
-import { useLanguage } from "../../../../hooks/useLanguage";
 import Link from "next/link";
-import { IActiveMenuItemRootState } from "../../../../lib/types/activeMenuItem";
 import { GoLinkExternal } from "react-icons/go";
-import { activeMenuItemActions } from "@/store/activeMenuItem-slice";
-import { ICategory } from "@/lib/types/subCategories";
+import { ISideNavBarRootState } from "@/lib/types/sidebar";
+import { IActiveMenuItemRootState } from "@/lib/types/activeMenuItem";
+import { sideNavBarActions } from "@/store/sideNavBar-slice";
+import { useLanguage } from "@/hooks/useLanguage";
 
-const SideNavSide = () => {
+const SubCategoriesItems = () => {
   const dispatch = useDispatch();
-
-  function openNextSideBar(
-    nextSidebarContent: ICategory[] = [],
-    nextActiveItemName: string,
-    nextActiveItemIndex: number
-  ) {
-    dispatch(sideNavBarActions.setNextSidebarEntries(nextSidebarContent));
-    // dispatch(sideNavBarActions.closeNavbar());
-    dispatch(sideNavBarActions.openNextSidebar());
-    dispatch(
-      activeMenuItemActions.setNextActiveMenuItemText(nextActiveItemName)
-    );
-    dispatch(
-      activeMenuItemActions.setNextActiveMenuItemIndex(nextActiveItemIndex)
-    );
-  }
-
   const ArrowDirection = HiChevronRight;
+  const ArrowBackDirection = HiChevronLeft;
 
-  const subCatList = useSelector(
-    (state: ISideNavBarRootState) => state.sideNavBar.subCatList
-  );
-
-  const isSidebarOpen = useSelector(
-    (state: ISideNavBarRootState) => state.sideNavBar.isSidebarOpen
-  );
-
-  const activeMenuItemText = useSelector(
-    (state: IActiveMenuItemRootState) => state.activeMenuItem.activeMenuItemText
+  const nextSubCatList = useSelector(
+    (state: ISideNavBarRootState) => state.sideNavBar.nextSubCatList
   );
 
   const isNextSideBarOpen = useSelector(
     (state: ISideNavBarRootState) => state.sideNavBar.isNextSideBarOpen
   );
 
-  const closeSidebar = () => {
-    dispatch(sideNavBarActions.closeSidebar());
+  const nextActiveMenuItemText = useSelector(
+    (state: IActiveMenuItemRootState) =>
+      state.activeMenuItem.nextActiveMenuItemText
+  );
+
+  const closeNextSidebar = () => {
+    dispatch(sideNavBarActions.closeNextSidebar());
   };
 
   const closeNavbar = () => {
@@ -60,14 +39,14 @@ const SideNavSide = () => {
   const { t } = useLanguage();
 
   // TODO: Change the calculation of the left position after adding nested drawer
-  const leftPosition = 50;
+  const leftPosition = 760 - 380 + 50;
 
   return (
     <>
-      {subCatList.length ? (
+      {nextSubCatList.length ? (
         <Transition
           nodeRef={nodeRef}
-          in={isSidebarOpen}
+          in={isNextSideBarOpen!}
           timeout={300}
           mountOnEnter
           unmountOnExit
@@ -76,12 +55,12 @@ const SideNavSide = () => {
             return (
               <div
                 ref={nodeRef}
-                className={`max-w-[380px] w-[90%] h-screen pb-4 fixed top-0 shadow-md z-[1010] bg-palette-card overflow-auto 
+                className={`max-w-[380px] w-[90%] h-screen pb-4 fixed top-0 shadow-md z-[1012] bg-palette-card overflow-auto
                 ${
                   isNextSideBarOpen
                     ? `left-[${leftPosition}px]`
-                    : "left-[380px]"
-                }
+                    : "left-[760px]"
+                } 
                 ${
                   state === "entering"
                     ? "animate-sidenavLTREntering"
@@ -93,16 +72,16 @@ const SideNavSide = () => {
               >
                 <div
                   className="flex items-center justify-between pt-4 pb-3 px-6"
-                  /* onClick={closeSidebar} */
+                  /* onClick={closeNextSidebar} */
                 >
                   <div className="flex items-center">
                     {/* <ArrowBackDirection style={{ fontSize: "1.5rem" }} /> */}
                     <h3 className="ml-4 text-black font-bold text-base underline">
-                      {t[activeMenuItemText]}
+                      {t[nextActiveMenuItemText]}
                     </h3>
                   </div>
                   <Link
-                    href={`/${activeMenuItemText}`}
+                    href={`/${nextActiveMenuItemText}`}
                     className=""
                     onClick={closeNavbar}
                   >
@@ -115,24 +94,17 @@ const SideNavSide = () => {
                 <hr className="mb-6" />
 
                 <ul className="rounded-lg w-full pl-4">
-                  {subCatList.map((item, index) => {
+                  {nextSubCatList.map((item, index) => {
                     return (
                       <li
                         className={`py-3 transition-color duration-300 hover:bg-gray-200 font-bold border-b-[0.5px] border-gray-700
                         ${index === 0 && "border-t-[0.5px]"}
                         `}
-                        key={item.category}
+                        key={index}
                       >
                         <div
                           className="flex items-center px-5 cursor-pointer text-sm"
-                          onClick={() =>
-                            openNextSideBar(
-                              item.subCategories ||
-                                [] /* if no data in subcategories - it's a single product page */,
-                              item.category,
-                              index
-                            )
-                          }
+                          onClick={() => console.log("clicked")}
                           onMouseOver={() => console.log("hover")}
                         >
                           <div className="mx-4 grow">
@@ -179,5 +151,5 @@ const SideNavSide = () => {
   );
 };
 
-SideNavSide.displayName = "SideNavSide";
-export default SideNavSide;
+SubCategoriesItems.displayName = "SubCategoriesItems";
+export default SubCategoriesItems;

@@ -5,7 +5,7 @@ import { megaMenuActions } from "../../../store/megaMenu-slice";
 import { useLanguage } from "../../../hooks/useLanguage";
 import menuItems from "../../../mock/menuItems";
 import { HiChevronRight, HiChevronLeft } from "react-icons/hi";
-import { IDropDown } from "../../../lib/types/dropDown";
+import { ICategory } from "../../../lib/types/subCategories";
 import { useRouter } from "next/router";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { IActiveMenuItemRootState } from "../../../lib/types/activeMenuItem";
@@ -13,12 +13,12 @@ import { GoLinkExternal } from "react-icons/go";
 
 interface Props {
   onClick?: (
-    submenu: IDropDown[] | undefined,
+    submenu: ICategory[] | undefined,
     activeItemName: string,
     index: number
   ) => void;
   onMouseOver?: (
-    submenu: IDropDown[] | undefined,
+    submenu: ICategory[] | undefined,
     index: number,
     activeItemName: string
   ) => void;
@@ -32,11 +32,11 @@ const MenuItems: React.FC<Props> = (props) => {
   const ArrowDirection = HiChevronRight;
 
   function onMenuItemClickHandler(
-    productsGroup: IDropDown[] | undefined,
+    subCategories: ICategory[] | undefined,
     category: string,
     index: number
   ) {
-    props.onClick && props.onClick(productsGroup, category, index);
+    props.onClick && props.onClick(subCategories, category, index);
     width >= 768 && dispatch(megaMenuActions.closeMegaMenu());
   }
 
@@ -46,6 +46,7 @@ const MenuItems: React.FC<Props> = (props) => {
   );
 
   const firstData = menuItems.slice(0, 18);
+
   return (
     <div className="flex items-center flex-col">
       <ul className="rounded-lg w-full pl-4">
@@ -61,20 +62,25 @@ const MenuItems: React.FC<Props> = (props) => {
                 }`}
                 onClick={() =>
                   onMenuItemClickHandler(
-                    item.productsGroup,
+                    item.subCategories ||
+                      [] /* if no data in subcategories - it's a single product page */,
                     item.category,
                     index
                   )
                 }
                 onMouseOver={() =>
-                  props.onMouseOver?.(item.productsGroup, index, item.category)
+                  props.onMouseOver?.(
+                    item.subCategories || [],
+                    index,
+                    item.category
+                  )
                 }
               >
                 <item.icon className="w-5 h-5" />
                 <div className="mx-4 grow">
                   <span
                     className={`text-black font-bold text-sm ${
-                      !item.productsGroup ? "text-gray-400" : ""
+                      !item.subCategories ? "text-gray-400" : ""
                     } ${
                       index === activeMenuItemIndex
                         ? "md:text-palette-primary"
@@ -83,13 +89,13 @@ const MenuItems: React.FC<Props> = (props) => {
                   >
                     {t[item.category]}
                   </span>
-                  {item.productsGroup && (
+                  {item.subCategories && (
                     <span className="text-slate-700 text-xs	font-light ml-2">
-                      {`(${item.productsGroup?.length})`}
+                      {`(${item.subCategories?.length})`}
                     </span>
                   )}
                 </div>
-                {item.productsGroup ? (
+                {item.subCategories ? (
                   <div className="flex items-center">
                     <GoLinkExternal
                       style={{ fontSize: "1rem", marginRight: "0.5rem" }}
@@ -98,50 +104,13 @@ const MenuItems: React.FC<Props> = (props) => {
                   </div>
                 ) : null}
               </div>
-              {/* ) : (
-              <Link href={`/${item.category}`}>
-                <div
-                  className={`flex items-center mt-3 px-5  cursor-pointer text-sm ${
-                    index === activeMenuItemIndex
-                      ? "md:text-palette-primary"
-                      : ""
-                  }`}
-                  onClick={() =>
-                    onMenuItemClickHandler(
-                      item.productsGroup,
-                      item.category,
-                      index
-                    )
-                  }
-                  onMouseOver={() =>
-                    props.onMouseOver?.(
-                      item.productsGroup,
-                      index,
-                      item.category
-                    )
-                  }
-                >
-                  <item.icon className="w-6 h-6 " />
-                  <div
-                    className={`mx-4 grow ${
-                      !item.productsGroup ? "text-gray-400 font-normal" : ""
-                    }`}
-                  >
-                    {t[item.category]}
-                  </div>
-                  {item.productsGroup ? (
-                    <ArrowDirection style={{ fontSize: "1rem" }} />
-                  ) : null}
-                </div>
-              </Link>
-            )} */}
             </li>
           );
         })}
       </ul>
-      <button className="bg-transparent hover:bg-palette-tertiary text-palette-tertiary font-semibold hover:text-white py-2 px-4 border border-palette-tertiary hover:border-transparent rounded text-sm my-4">
+      {/* <button className="bg-transparent hover:bg-palette-tertiary text-palette-tertiary font-semibold hover:text-white py-2 px-4 border border-palette-tertiary hover:border-transparent rounded text-sm my-4">
         Voyez tous
-      </button>
+      </button> */}
     </div>
   );
 };
