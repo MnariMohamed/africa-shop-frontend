@@ -26,8 +26,8 @@ const CarouselBox: React.FC<Props> = ({
     infinite: true,
     speed: 600,
     centerPadding: "60px",
-    slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     // initialSlide: 0,
     swipeToSlide: true,
     nextArrow: <NextArrow />,
@@ -36,15 +36,15 @@ const CarouselBox: React.FC<Props> = ({
       {
         breakpoint: 1324,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
+          slidesToShow: 3,
+          slidesToScroll: 3,
         },
       },
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 2,
+          slidesToScroll: 2,
         },
       },
       {
@@ -71,7 +71,7 @@ const CarouselBox: React.FC<Props> = ({
       }`}
     >
       <div
-        className={`flex flex-col items-center justify-around flex-grow text-sm sm:text-base  bg-cover bg-no-repeat bg-center rounded-md backdrop-blur-md ${className}`}
+        className={`flex flex-col items-center justify-center flex-grow text-sm sm:text-base  bg-cover bg-no-repeat bg-center rounded-md backdrop-blur-md ${className}`}
       >
         <h2
           className={`text-lg  sm:text-xl font-bold ${
