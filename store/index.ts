@@ -4,7 +4,6 @@ import specialOfferProductsReducer from "./specialOfferProducts-slice";
 import newestProductReducer from "./newestProduct-slice";
 import SortedProductsListReducer from "./sortedProductList-slice";
 import cartUiReducer from "./cartUI-slice";
-import cartSliceReducer from "./cart-slice";
 import sideNavBarReducer from "./sideNavBar-slice";
 import userInfoReducer from "./user-slice";
 import megaMenuReducer from "./megaMenu-slice";
@@ -21,7 +20,6 @@ const store = configureStore({
     newestProductsList: newestProductReducer,
     sortedProductsList: SortedProductsListReducer,
     cartUi: cartUiReducer,
-    cart: cartSliceReducer,
     userInfo: userInfoReducer,
     sideNavBar: sideNavBarReducer,
     megaMenu: megaMenuReducer,

@@ -4,7 +4,6 @@ import { HiOutlinePlusSm, HiMinusSm } from "react-icons/hi";
 import { BsCartPlus } from "react-icons/bs";
 import { useLanguage } from "../../hooks/useLanguage";
 import { useDispatch } from "react-redux";
-import { cartActions } from "../../store/cart-slice";
 import { IProduct } from "../../lib/types/products";
 import ProductPrice from "../UI/ProductPrice";
 import { toast } from "react-toastify";
@@ -26,7 +25,7 @@ const CallToAction: React.FC<Props> = ({ product }) => {
 
   const dispatch = useDispatch();
 
-  function addToCartHandler() {
+  /* function addToCartHandler() {
     dispatch(
       cartActions.addItemToCart({
         product: product,
@@ -36,7 +35,7 @@ const CallToAction: React.FC<Props> = ({ product }) => {
     toast.success(t.productAddedToCartMsg, {
       theme: theme === "dark" ? "dark" : "light",
     });
-  }
+  } */
 
   function increment() {
     if (counter < 10) {
@@ -80,7 +79,7 @@ const CallToAction: React.FC<Props> = ({ product }) => {
       <br />
       <button
         className="border-none bg-palette-primary/90 hover:bg-palette-primary/100 transition-colors duration-200 shadow-lg px-3 lg:px-8 py-4 text-palette-side flex items-center rounded-lg cursor-pointer  text-[12px] sm:text-base"
-        onClick={addToCartHandler}
+        /* onClick={addToCartHandler} */
       >
         <BsCartPlus style={{ fontSize: "1.2rem", margin: "0 0.4rem" }} />
         {t.addToCart}

@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTheme } from "next-themes";
-import { cartActions } from "../../../store/cart-slice";
+// import { cartActions } from "../../../store/cart-slice";
 import { favoriteActions } from "../../../store/favorite-slice";
 import {
   RiHeartFill,
@@ -30,12 +30,12 @@ const CardActions: React.FC<Props> = ({ product }) => {
   const isInFavorite = favoriteItems.some((item) => item.name === product.name);
   const FavoriteIcon = isInFavorite ? RiHeartFill : RiHeartAddLine;
 
-  function addToCartHandler() {
+  /*   function addToCartHandler() {
     dispatch(cartActions.addItemToCart({ product: product, quantity: 1 }));
     toast.success(t.productAddedToCartMsg, {
       theme: theme === "dark" ? "dark" : "light",
     });
-  }
+  } */
 
   function toggleFavoriteHandler() {
     !isInFavorite
@@ -61,7 +61,7 @@ const CardActions: React.FC<Props> = ({ product }) => {
       </div>
       <div
         className="hover:text-rose-600 active:scale-125 transition-all sm:px-3 md:px-0"
-        onClick={addToCartHandler}
+        /* onClick={addToCartHandler} */
       >
         <RiShoppingCart2Line
           style={{
