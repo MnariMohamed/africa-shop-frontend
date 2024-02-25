@@ -73,6 +73,7 @@ const productsSlicer = createSlice({
         image: product.images[0],
         images: product.images,
         category: product.category,
+        createdAt: product.createdAt,
       })),
       loading: false,
     }),

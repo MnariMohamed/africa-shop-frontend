@@ -37,6 +37,7 @@ export interface IProduct {
   discount?: number;
   category: Category;
   status: string; // Inactive, Active
+  createdAt?: string;
 }
 
 export interface ProductState {
