@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Provider } from "react-redux";
 import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 import Header from "../header";
-import store from "../../store/index";
+import store, { AppDispatch, RootState } from "../../store/index";
 import NextNProgress from "nextjs-progressbar";
 import { ToastContainer } from "react-toastify";
 import Footer from "../footer";
+import { useSelector } from "react-redux";
+import Preloader from "../UI/preLoader/Preloader";
 
 const Layout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return (
@@ -22,8 +24,11 @@ const Layout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
         <main className="flex-grow md:mt-40 md:mx-10">{children}</main>
         <Footer />
       </div>
-      {/*       </ThemeProvider>
-       */}{" "}
+      <ToastContainer
+        autoClose={2000}
+        hideProgressBar={true}
+        position={"top-right"}
+      />
     </Provider>
   );
 };

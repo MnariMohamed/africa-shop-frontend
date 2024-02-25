@@ -18,7 +18,7 @@ const VerticalBar: React.FC<VerticalBarProps> = ({ text, onClick }) => {
 
   return (
     <div
-      className="max-w-[50px] w-[10%] h-screen fixed top-0 shadow-md z-[1000] origin-left overflow-y-auto left-0 translate-x-[100%] animate-sidenavRTLEntering bg-palette-tertiary cursor-pointer"
+      className="max-w-[50px] w-[10%] h-screen fixed top-0 shadow-md z-[1000] origin-left overflow-y-auto left-0 translate-x-[100%] animate-sidenavLTREntering bg-palette-tertiary cursor-pointer"
       onClick={onClick}
     >
       <div

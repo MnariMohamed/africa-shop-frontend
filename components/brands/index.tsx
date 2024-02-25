@@ -2,16 +2,22 @@ import React from "react";
 import BrandBox from "./BrandBox";
 import { brandContent } from "../../mock/brand";
 import Slider from "react-slick";
-import SectionTitle from "../UI/SectionTitle";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
+
 const Brands = () => {
   const slidesToScroll = brandContent.length;
+  const { loading, brands } = useSelector((state: RootState) => state.brands);
+
   const settings = {
+    useTransform: true,
+    dots: true,
     infinite: true,
-    speed: 20000, // Set the speed to a lower value for slower sliding
+    autoplay: true,
+    speed: 15000, // Set the speed to a lower value for slower sliding
     slidesToShow: 8,
     slidesToScroll: slidesToScroll,
-    autoplay: true,
-    autoplaySpeed: 10000, // Adjust autoplay speed as needed
+    autoplaySpeed: 8000, // Adjust autoplay speed as needed
     cssEase: "linear",
     swipeToSlide: false,
     responsive: [
@@ -42,12 +48,13 @@ const Brands = () => {
   return (
     <div className="md:p-1 my-2 mx-2 md:mx-0">
       <Slider {...settings}>
-        {brandContent.map((brandItem) => {
+        {brands.map((brandItem) => {
           return (
             <BrandBox
               key={brandItem.id}
               brandName={brandItem.name}
-              imageSrc={brandItem.imgSrc}
+              imageSrc={brandItem.logo}
+              loading={loading}
             />
           );
         })}

@@ -8,11 +8,28 @@ import { ISideNavBarRootState } from "@/lib/types/sidebar";
 import { IActiveMenuItemRootState } from "@/lib/types/activeMenuItem";
 import { sideNavBarActions } from "@/store/sideNavBar-slice";
 import { useLanguage } from "@/hooks/useLanguage";
+import { ICategory } from "@/lib/types/categories";
+import { activeMenuItemActions } from "@/store/activeMenuItem-slice";
 
 const SubCategoriesItems = () => {
   const dispatch = useDispatch();
   const ArrowDirection = HiChevronRight;
-  const ArrowBackDirection = HiChevronLeft;
+
+  const onNextHandler = (
+    nextSidebarContent: ICategory[] = [],
+    nextActiveItemName: string,
+    nextActiveItemIndex: number
+  ) => {
+    // dispatch(sideNavBarActions.setNextSidebarEntries(nextSidebarContent));
+    // dispatch(sideNavBarActions.closeNavbar());
+    dispatch(sideNavBarActions.openNextSidebar());
+    dispatch(
+      activeMenuItemActions.setNextActiveMenuItemText(nextActiveItemName)
+    );
+    dispatch(
+      activeMenuItemActions.setNextActiveMenuItemIndex(nextActiveItemIndex)
+    );
+  };
 
   const nextSubCatList = useSelector(
     (state: ISideNavBarRootState) => state.sideNavBar.nextSubCatList

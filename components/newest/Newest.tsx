@@ -13,9 +13,9 @@ const Newest = () => {
   const { width } = useWindowDimensions();
   let numProductToShow = width >= 1536 ? 12 : 8;
 
-  const newestProducts: IProduct[] = useSelector(
-    (state: any) => state.newestProductsList.productsList
-  );
+  /*   const { products } = useSelector((state: any) => state.products) as {
+    products: IProduct[];
+  }; */
 
   return (
     <div className="mx-auto my-4 md:my-8 flex flex-col xl:max-w-[2130px]">
@@ -24,7 +24,13 @@ const Newest = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
         {products
           ? products.slice(0, numProductToShow).map((product: IProduct) => {
-              return <Card key={product.name} product={product} />;
+              return (
+                <Card
+                  key={`${product.name}-${product.id}`}
+                  product={product}
+                  displayStars
+                />
+              );
             })
           : null}
       </div>
