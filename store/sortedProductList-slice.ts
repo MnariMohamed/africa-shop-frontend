@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { IProductList } from "../lib/types/productList";
 import { IProduct } from "../lib/types/products";
-import { sortByPoPularity } from "../utilities/sortByPopularity";
+// import { sortByPoPularity } from "../utilities/sortByPopularity";
 import { sortByCheapest, sortByExpensive } from "../utilities/sortByCost";
 import { newestProductsFn } from "../utilities/sortByTimeStamp";
 
@@ -26,10 +26,10 @@ const SortedProductsListSlice = createSlice({
           state.productsList = newestProductsFn(state.productsList);
           break;
         }
-        case "popular": {
+        /* case "popular": {
           state.productsList = state.productsList.sort(sortByPoPularity);
           break;
-        }
+        } */
         case "cheapest": {
           state.productsList = state.productsList.sort(sortByCheapest);
           break;

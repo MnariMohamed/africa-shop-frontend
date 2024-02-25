@@ -7,7 +7,7 @@ export interface ICartProduct {
   discount?: number;
   brand: string;
   category: string[];
-  starRating: number;
+  starRating?: number;
   isOffer?: boolean;
   details?: IProductDetails[];
   registerDate?: string;
