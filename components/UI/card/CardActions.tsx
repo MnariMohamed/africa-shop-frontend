@@ -27,8 +27,8 @@ const CardActions: React.FC<Props> = ({ product }) => {
   const favoriteItems = useSelector(
     (state: IFavoriteRootState) => state.favorite.items
   );
-  const isInFavorite = favoriteItems.some((item) => item.name === product.name);
-  const FavoriteIcon = isInFavorite ? RiHeartFill : RiHeartAddLine;
+  // const isInFavorite = favoriteItems.some((item) => item.name === product.name);
+  // const FavoriteIcon = isInFavorite ? RiHeartFill : RiHeartAddLine;
 
   /*   function addToCartHandler() {
     dispatch(cartActions.addItemToCart({ product: product, quantity: 1 }));
@@ -37,15 +37,15 @@ const CardActions: React.FC<Props> = ({ product }) => {
     });
   } */
 
-  function toggleFavoriteHandler() {
+  /*  function toggleFavoriteHandler() {
     !isInFavorite
       ? dispatch(favoriteActions.addToFavorite(product))
       : dispatch(favoriteActions.removeFromFavorite(product.name));
-  }
+  } */
 
   return (
     <div className="w-1/2 md:w-auto md:h-[130px] mt-2 p-2 flex md:flex-col justify-around self-center absolute -top-4 md:-top-2 md:bottom-auto -left-2 md:-left-1 rounded-lg md:rounded-full shadow-lg backdrop-filter backdrop-blur-[8px] bg-palette-card/20  ">
-      <div
+      {/*  <div
         className="hover:text-rose-600 transition-colors sm:px-3 md:px-0"
         onClick={toggleFavoriteHandler}
       >
@@ -55,7 +55,7 @@ const CardActions: React.FC<Props> = ({ product }) => {
             fill: `${isInFavorite ? "#ee384e" : ""}`,
           }}
         />
-      </div>
+      </div> */}
       <div className="hover:text-rose-600 transition-colors sm:px-3 md:px-0">
         <RiShareLine style={{ fontSize: "1.2rem" }} />
       </div>

@@ -6,10 +6,10 @@ export interface SliderState {
 
 export interface Slider {
   id?: number;
-  name: string;
-  description: string;
-  createdAt: string;
-  updatedAt: string;
+  name?: string;
+  description?: string;
+  createdAt?: string;
+  updatedAt?: string;
   imageUrl: string;
 }
 

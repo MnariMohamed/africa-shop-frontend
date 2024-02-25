@@ -28,14 +28,30 @@ const Carousel = () => {
     ),
   };
 
-  const { sliders, loading } = useSelector((state: RootState) => state.sliders);
+  // const { sliders, loading } = useSelector((state: RootState) => state.sliders);
 
   return (
-    <>
+    <div className="relative mt-5">
+      <Slider {...settings}>
+        {sliderContent.map((slideContent) => {
+          return <Slide key={slideContent.id} {...slideContent} />;
+        })}
+      </Slider>
+      <>
+        <div className="absolute top-1/2 right-4 md:right-3 lg:right-8 shadow-lg rounded-full bg-palette-card/80 p-1 drop-shadow-lg text-[0.8rem] md:text-[1.8rem]">
+          <HiOutlineChevronRight />
+        </div>
+        <div className="absolute top-1/2 left-4  md:left-3 lg:left-8 shadow-lg rounded-full bg-palette-card/80 p-1 drop-shadow-lg text-[0.8rem] md:text-[1.8rem]">
+          <HiOutlineChevronLeft />
+        </div>
+      </>
+    </div>
+
+    /* <>
       {!loading && sliders.length ? (
         <div className="relative mt-5">
           <Slider {...settings}>
-            {sliders.map((slideContent) => {
+            {sliderContent.map((slideContent) => {
               return <Slide key={slideContent.id} {...slideContent} />;
             })}
           </Slider>
@@ -53,7 +69,7 @@ const Carousel = () => {
           <Placeholder width={"w-[100%]"} height={"h-[35vh]"} />
         </div>
       )}
-    </>
+    </> */
   );
 };
 
