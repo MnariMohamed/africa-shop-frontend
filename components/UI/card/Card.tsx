@@ -35,59 +35,54 @@ const Card: React.FC<Props> = ({ product, displayStars }) => {
       className="max-w-sm bg-white shadow-lg rounded-lg my-4 mx-4 cursor-pointer relative"
       onClick={handleProductClick}
     >
-      <div className="relative">
-        <div className="w-full relative bg-slate-400/30 p-1 rounded-bl-xl rounded-tl-xl md:rounded-tr-xl md:rounded-bl-none flex flex-col justify-between items-center">
-          <div className="flex items-center justify-center w-full h-64">
-            {" "}
-            {/* Add if u want 'bg-gray-200' */}
+      <div className="relative w-full h-48">
+        {" "}
+        {/* Adjust the height as needed */}
+        <Image
+          src={product.images[0]?.path || "/images/placeholder.png"}
+          layout="fill"
+          className="object-cover rounded-t-lg"
+          alt={product.name}
+        />
+        {product?.discount && (
+          <span className="w-8 sm:w-auto absolute top-1 right-1">
             <Image
-              src={product.image?.path || "/images/placeholder.png"}
-              width={200}
-              height={200}
-              alt={product.name}
-              objectFit="contain"
+              src="/images/discount-icon/discount.webp"
+              width={discountIcon}
+              height={discountIcon}
+              alt="discount-icon"
             />
-          </div>
-          {product?.discount ? (
-            <span className="w-8 sm:w-auto absolute md:-top-2 md:-right-2 top-1 right-1">
-              <Image
-                src="/images/discount-icon/discount.webp"
-                width={discountIcon}
-                height={discountIcon}
-                alt="discount-icon"
-              />
-            </span>
-          ) : null}
-        </div>
+          </span>
+        )}
+      </div>
 
-        <div className="px-4 py-2">
-          <p className="text-sm font-extralight sm:text-[0.75rem] text-start text-palette-mute line-clamp-2">
-            Category : {product.category.name}
-          </p>
+      <div className="px-5 py-4">
+        <p className="text-sm font-extralight sm:text-[0.75rem] text-start text-palette-mute line-clamp-2">
+          Category : {product.category.name}
+        </p>
 
-          <h2 className="text-lg font-semibold text-gray-800">
-            {product.name}
-          </h2>
-          <p className="text-gray-600 mt-1">{product.description}</p>
-        </div>
-        <div className="flex items-center justify-between px-4 py-2">
-          {displayStars && (
-            <StarRatingComponent
-              name={`product_rate_${product.name}`}
-              starCount={5}
-              value={2} // Replace with your actual rating value
-            />
-          )}
-          <ProductPrice price={product.price} discount={product.discount} />
-        </div>
-        <div className="px-4 py-2 flex justify-end">
-          <button
-            onClick={handleProductClick}
-            className="text-xs text-indigo-600 hover:underline"
-          >
-            Voir détails
-          </button>
-        </div>
+        <h2 className="text-lg font-semibold text-gray-800 mb-2">
+          {product.name}
+        </h2>
+        <p className="text-gray-600 mt-1 line-clamp-3">{product.description}</p>
+      </div>
+      <div className="flex items-center justify-between px-4 py-2">
+        {displayStars && (
+          <StarRatingComponent
+            name={`product_rate_${product.name}`}
+            starCount={5}
+            value={2} // Replace with your actual rating value
+          />
+        )}
+        <ProductPrice price={product.price} discount={product.discount} />
+      </div>
+      <div className="px-4 py-2 flex justify-end">
+        <button
+          onClick={handleProductClick}
+          className="text-xs text-indigo-600 hover:underline"
+        >
+          Voir détails
+        </button>
       </div>
       <CardActions product={product} />
     </div>

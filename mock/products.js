@@ -7,6 +7,7 @@ export const products = [
     quantity: 6,
     discount: 0,
     status: "Active",
+    createdAt: "2024-02-03T14:04:54.541Z",
     image: {
       id: "32b4e87d-077e-4b38-a3b2-cb1a42b13adf",
       path: "/images/products/product1.png",
@@ -52,6 +53,7 @@ export const products = [
     quantity: 6,
     discount: 0,
     status: "Active",
+    createdAt: "2024-02-06T14:04:54.541Z",
     image: {
       id: "32b4e87d-077e-4b38-a3b2-cb1a42b13adf",
       path: "/images/products/product1.png",
@@ -97,6 +99,7 @@ export const products = [
     quantity: 6,
     discount: 0,
     status: "Active",
+    createdAt: "2024-03-03T14:04:54.541Z",
     image: {
       id: "32b4e87d-077e-4b38-a3b2-cb1a42b13adf",
       path: "/images/products/product5.png",
@@ -142,6 +145,7 @@ export const products = [
     quantity: 6,
     discount: 0,
     status: "Active",
+    createdAt: "2024-04-03T14:04:54.541Z",
     image: {
       id: "32b4e87d-077e-4b38-a3b2-cb1a42b13adf",
       path: "/images/products/product1.png",
@@ -187,6 +191,7 @@ export const products = [
     quantity: 6,
     discount: 0,
     status: "Active",
+    createdAt: "2024-01-03T14:04:54.541Z",
     image: {
       id: "32b4e87d-077e-4b38-a3b2-cb1a42b13adf",
       path: "/images/products/product5.png",
@@ -232,6 +237,7 @@ export const products = [
     quantity: 6,
     discount: 0,
     status: "Active",
+    createdAt: "2024-02-03T14:04:54.541Z",
     image: {
       id: "32b4e87d-077e-4b38-a3b2-cb1a42b13adf",
       path: "/images/products/product1.png",
@@ -276,6 +282,7 @@ export const products = [
     quantity: 6,
     discount: 20,
     status: "Active",
+    createdAt: "2024-02-03T14:04:54.541Z",
     image: {
       id: "32b4e87d-077e-4b38-a3b2-cb1a42b13adf",
       path: "/images/products/product5.png",
@@ -317,6 +324,7 @@ export const products = [
     quantity: 6,
     discount: 0,
     status: "Active",
+    createdAt: "2024-02-03T14:04:54.541Z",
     image: {
       id: "32b4e87d-077e-4b38-a3b2-cb1a42b13adf",
       path: "/images/products/product1.png",

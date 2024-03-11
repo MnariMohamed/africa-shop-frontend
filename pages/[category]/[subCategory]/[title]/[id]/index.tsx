@@ -14,13 +14,13 @@ const ProductDetailsPage: NextPage<{
 }> = ({ product }) => {
   const { currentProduct } = useSelector((state: RootState) => state.products);
 
-  /* const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     if (!currentProduct || currentProduct.id !== product.id) {
       dispatch(setProduct(product));
     }
-  }, [product, dispatch, currentProduct]); */
+  }, [product, dispatch, currentProduct]);
 
   return (
     <div className="container mx-auto px-4 lg:mt-8">

@@ -690,8 +690,9 @@ const menuItems = [
 export default menuItems;
 
 export const extraMenu = [
-  { category: "about", icon: AiOutlinePercentage, href: "/about" },
+  { category: "offer", icon: AiOutlinePercentage, href: "/offers" },
   { category: "brands", icon: RiFireLine, href: "/brands" },
+  { category: "about", icon: AiOutlinePercentage, href: "/about" },
   { category: "contact", icon: RiFireLine, href: "/contact" },
   { category: "news", icon: RiFireLine, href: "/news" },
 ];

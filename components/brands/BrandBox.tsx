@@ -17,7 +17,7 @@ const BrandBox: React.FC<Props> = ({ brandName, imageSrc, loading }) => {
         layout="responsive"
         width={300}
         height={175}
-        objectFit="cover" // Ensures the image covers the area defined by the parent div
+        style={{ objectFit: "cover" }}
       />
       <div className="absolute dark:inset-0 dark:bg-slate-800/40"></div>
     </div>

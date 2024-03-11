@@ -2,9 +2,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { IProduct } from "../lib/types/products";
 import { IProductList } from "../lib/types/productList";
+import { products } from "@/mock/products";
 
 const initialState: IProductList = {
-  productsList: [],
+  productsList: products,
 };
 
 const newestProductsSlice = createSlice({

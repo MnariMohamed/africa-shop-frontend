@@ -8,7 +8,7 @@ import NextNProgress from "nextjs-progressbar";
 import { ToastContainer } from "react-toastify";
 import Footer from "../footer";
 import { useSelector } from "react-redux";
-import Preloader from "../UI/preLoader/Preloader";
+// import Preloader from "../UI/preLoader/Preloader";
 
 const Layout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return (

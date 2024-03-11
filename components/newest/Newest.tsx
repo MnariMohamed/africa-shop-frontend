@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLanguage } from "../../hooks/useLanguage";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
@@ -6,24 +6,24 @@ import Link from "next/link";
 import Card from "../UI/card/Card";
 import { IProduct } from "../../lib/types/products";
 import SectionTitle from "../UI/SectionTitle";
-import { products } from "@/mock/products";
+import { useDispatch } from "react-redux";
+import { getNewProducts } from "@/store/api";
+import { AppDispatch, RootState } from "@/store";
 
 const Newest = () => {
   const { t } = useLanguage();
   const { width } = useWindowDimensions();
   let numProductToShow = width >= 1536 ? 12 : 8;
 
-  /*   const { products } = useSelector((state: any) => state.products) as {
-    products: IProduct[];
-  }; */
+  const { homeProducts } = useSelector((state: RootState) => state.products);
 
   return (
     <div className="mx-auto my-4 md:my-8 flex flex-col xl:max-w-[2130px]">
       <SectionTitle title={"newest"} arrow />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-        {products
-          ? products.slice(0, numProductToShow).map((product: IProduct) => {
+        {homeProducts
+          ? homeProducts.slice(0, numProductToShow).map((product: IProduct) => {
               return (
                 <Card
                   key={`${product.name}-${product.id}`}

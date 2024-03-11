@@ -2,7 +2,16 @@
 
 const nextConfig = {
   images: {
-    domains: ["plc-trade.com", "loremflickr.com"],
+    domains: [
+      "plc-trade.com",
+      "loremflickr.com",
+      "ce8dc832c.cloudimg.io",
+      "media.licdn.com",
+      "other-domain.com",
+      "wiautomation.anticipa.io",
+      "another-example.com",
+      "avsuwzdjuo.cloudimg.io",
+    ],
   },
   reactStrictMode: true,
   i18n: {

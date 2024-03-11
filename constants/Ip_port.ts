@@ -1,6 +1,6 @@
-const Adresse = "http://localhost:3000";
+const Adresse = "https://abde.futuretech.ma";
 export default {
   Adresse,
 };
 
-/* http://192.168.1.127:3020 */
+/* http://localhost:3000 */

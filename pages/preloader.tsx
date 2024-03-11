@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 const Preloader = dynamic(() => import("@/components/UI/preLoader/Preloader"));
 
 const FirstScreen = () => {
-  const { loading } = useSelector((state: RootState) => state.brands);
+  const { loading } = useSelector((state: RootState) => state.products);
 
   return loading ? <Preloader /> : null; // Or a redirect component if already loaded
 };

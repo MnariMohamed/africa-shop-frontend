@@ -44,7 +44,7 @@ const Breadcrumb = () => {
         <ul className="flex items-center space-x-1 md:space-x-3">
           <li className="cursor-pointer">
             <Link href="/">
-              <div className="flex pr-2">
+              <div className="flex pr-1">
                 <span>
                   <BsShop style={{ fontSize: "1.2rem" }} />
                 </span>

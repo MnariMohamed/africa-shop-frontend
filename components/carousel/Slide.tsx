@@ -1,17 +1,18 @@
 import React from "react";
 import Link from "next/link";
-import { useLanguage } from "../../hooks/useLanguage";
 import { Slider } from "@/lib/types/sliders/sliders";
 
 const Slide: React.FC<Slider> = ({ name, description, imageUrl }) => {
-  const { t } = useLanguage();
-
+  const truncatedDescription =
+    description && description.length > 20
+      ? description.substring(0, 20) + "..."
+      : description;
   return (
     <>
       <div
         className={`flex items-center justify-center relative w-[100%] h-[30vh] md:h-[50vh] bg-cover rounded-xl border-2 bg-center bg-no-repeat md:mt-4`}
         style={{
-          backgroundImage: imageUrl, // change it to `url(${imageUrl})`
+          backgroundImage: `url(${imageUrl})`, // change it to `url(${imageUrl})`
         }}
       >
         {/* <Link href={url}> */}
@@ -23,7 +24,7 @@ const Slide: React.FC<Slider> = ({ name, description, imageUrl }) => {
               {name}
             </h3>
             <p className="text-[0.5rem] md:text-lg mt-2 md:mt-4 lg:mt-8 text-black">
-              {description}
+              {truncatedDescription}
             </p>
           </div>
         </div>

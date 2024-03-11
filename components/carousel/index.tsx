@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
+import { Slider as SlideType } from "@/lib/types/sliders/sliders";
 import Slide from "./Slide";
-import { sliderContent } from "../../mock/slider";
 import { NextArrow, PrevArrow } from "./Arrows";
 import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi";
 import { useSelector } from "react-redux";
@@ -28,15 +28,19 @@ const Carousel = () => {
     ),
   };
 
-  // const { sliders, loading } = useSelector((state: RootState) => state.sliders);
+  const { sliders, loading } = useSelector((state: RootState) => state.sliders);
 
   return (
     <div className="relative mt-5">
-      <Slider {...settings}>
-        {sliderContent.map((slideContent) => {
-          return <Slide key={slideContent.id} {...slideContent} />;
-        })}
-      </Slider>
+      {loading ? (
+        <Placeholder width={"w-[100%]"} height={"h-[35vh]"} />
+      ) : (
+        <Slider {...settings}>
+          {sliders.map((slideContent: SlideType) => {
+            return <Slide key={slideContent.id} {...slideContent} />;
+          })}
+        </Slider>
+      )}
       <>
         <div className="absolute top-1/2 right-4 md:right-3 lg:right-8 shadow-lg rounded-full bg-palette-card/80 p-1 drop-shadow-lg text-[0.8rem] md:text-[1.8rem]">
           <HiOutlineChevronRight />

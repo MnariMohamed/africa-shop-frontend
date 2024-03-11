@@ -1,6 +1,9 @@
 import Slider from "react-slick";
 import SlideCard from "./SecondSliderCard";
 import { secondSlider } from "../../mock/secondSlider";
+import { RootState } from "@/store";
+import { useSelector } from "react-redux";
+import Placeholder from "../UI/Placeholder";
 
 const SecondSlider = () => {
   const settings = {
@@ -18,15 +21,19 @@ const SecondSlider = () => {
       </div>
     ),
   };
+
+  const { loading, sliders } = useSelector((state: RootState) => state.sliders);
   return (
     <div className="container mx-auto my-6 w-full">
-      <Slider {...settings}>
-        {secondSlider.map((item) => {
-          return (
-            <SlideCard key={item.id} title={item.title} desc={item.desc} />
-          );
-        })}
-      </Slider>
+      {loading ? (
+        <Placeholder width={"w-[100%]"} height={"h-[35vh]"} />
+      ) : (
+        <Slider {...settings}>
+          {sliders.map((item) => {
+            return <SlideCard key={item.id} item={item} />;
+          })}
+        </Slider>
+      )}
     </div>
   );
 };

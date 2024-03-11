@@ -38,13 +38,20 @@ export interface IProduct {
   category: Category;
   status: string; // Inactive, Active
   createdAt?: string;
+  timeStamp?: number;
 }
 
 export interface ProductState {
-  products: IProduct[] | [];
-  currentProduct: IProduct | null;
+  homeProducts: IProduct[];
+  newProducts: IProduct[];
+  currentProduct: IProduct;
   loading: boolean;
   error: any;
+  pagination: {
+    page: number;
+    limit: number;
+    total: number;
+  };
 }
 
 export interface ProductResponse {
