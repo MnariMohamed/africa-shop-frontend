@@ -1,14 +1,18 @@
 export interface IUser {
-  _id?: any;
-  name?: string;
+  id?: any;
+  firstName?: string;
+  lastName?: string;
   password?: string;
-  email: string;
-  isAdmin?: boolean;
-  token?: string;
+  email?: string;
+  role?: string;
+  status?: { id: number; name: string };
+  createdAt?: string;
 }
 
 export interface IUserInfo {
-  userInformation: IUser | null;
+  user: IUser | null;
+  token?: string;
+  tokenExpiresIn?: number;
 }
 
 //RootState interface=> used for state type in useSelector hook
