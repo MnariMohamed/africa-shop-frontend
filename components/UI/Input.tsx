@@ -47,7 +47,7 @@ const Input = React.forwardRef<IImperativeHandler, Props>((props, ref) => {
         htmlFor={props.id}
       >
         {props.required ? (
-          <span className="text-rose-700 mx-1 mt-1">*</span>
+          <span className="mx-1 mt-1 text-red-500">*</span>
         ) : null}
         {t[`${props.id}`]}
       </label>

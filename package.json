@@ -20,6 +20,7 @@
     "@zeit/next-css": "^1.0.1",
     "axios": "^1.6.2",
     "js-cookie": "^3.0.5",
+    "jsonwebtoken": "^9.0.2",
     "next": "^14.0.3",
     "next-connect": "^1.0.0",
     "next-themes": "^0.2.1",
@@ -41,6 +42,7 @@
     "video-react": "^0.16.0"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

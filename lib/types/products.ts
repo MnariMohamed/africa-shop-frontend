@@ -43,7 +43,8 @@ export interface IProduct {
 
 export interface ProductState {
   homeProducts: IProduct[];
-  newProducts: IProduct[];
+  searchedProducts: IProduct[];
+  similarProducts: IProduct[];
   currentProduct: IProduct;
   loading: boolean;
   error: any;

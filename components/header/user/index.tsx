@@ -6,7 +6,7 @@ import LoginBtn from "./LoginBtn";
 
 const User = () => {
   const userInfo = useSelector(
-    (state: IUserInfoRootState) => state.userInfo.userInformation
+    (state: IUserInfoRootState) => state.userInfo.user
   );
   return <div>{userInfo ? <UserAccountBtn /> : <LoginBtn />}</div>;
 };

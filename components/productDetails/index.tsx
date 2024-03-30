@@ -17,13 +17,7 @@ import { RootState } from "@/store";
 const ProductDetails: React.FC /* <Props> */ = () => {
   const { currentProduct } = useSelector((state: RootState) => state.products);
 
-  const { newProducts } = useSelector((state: RootState) => state.products);
-  const similarProductsList = newProducts
-    .filter(
-      (similarProduct) =>
-        similarProduct.category.id !== currentProduct?.category.id
-    )
-    .slice(0, 10);
+  const { similarProducts } = useSelector((state: RootState) => state.products);
 
   return (
     <div className="flex flex-col">
@@ -39,8 +33,8 @@ const ProductDetails: React.FC /* <Props> */ = () => {
         <div className="border-2 my-8">
           <Benefits />
         </div>
-        {similarProductsList.length > 0 && (
-          <SimilarProducts products={similarProductsList} />
+        {similarProducts.length > 0 && (
+          <SimilarProducts products={similarProducts} />
         )}
       </div>
     </div>

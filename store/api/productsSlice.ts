@@ -8,14 +8,15 @@ const PRODUCTS_URL = `${Ip_port.Adresse}/api/products`;
 
 const initialState: ProductState = {
   homeProducts: [],
-  newProducts: [],
+  searchedProducts: [],
   currentProduct: {} as IProduct,
+  similarProducts: [],
   loading: false,
   error: {},
   pagination: {
-    page: 1, // Current page
-    limit: 28, // Items per page
-    total: 0, // Total number of products
+    page: 1,
+    limit: 28,
+    total: 0,
   },
 };
 
@@ -38,25 +39,51 @@ export const getHomeProducts = createAsyncThunk(
   }
 );
 
-export const getNewProducts = createAsyncThunk(
-  "redux/products/getNewProducts",
-  async (
-    { page = 1, limit = 28 }: { page?: number; limit?: number },
-    { rejectWithValue }
-  ) => {
+export const getSimilarProducts = createAsyncThunk(
+  "redux/products/getSimilarProducts",
+  async (payload, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `${PRODUCTS_URL}?sort=createdAt%2CASC&join=images&join=category&limit=${limit}&page=${page}`,
+        `${PRODUCTS_URL}?join=images&join=category`,
         {
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const getProductsBySearch = createAsyncThunk(
+  "redux/products/getProductsBySearch",
+  async (
+    {
+      search,
+      page = 1,
+      limit = 28,
+      sortedBy = "createdAt%2CASC",
+    }: { search: string; page?: number; limit?: number; sortedBy?: string },
+    { rejectWithValue }
+  ) => {
+    const searchQuery = {
+      $or: [{ name: { $cont: search } }, { description: { $cont: search } }],
+    };
+    const queryString = `s=${encodeURIComponent(JSON.stringify(searchQuery))}`;
+    const searchApiUrl = `${PRODUCTS_URL}?${queryString}&sort=${sortedBy}&join=images&join=category&limit=${limit}&page=${page}`;
+    try {
+      const response = await axios.get(searchApiUrl, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       return {
-        data: response.data.data, // Your data
-        pagination: { page, limit, total: response.data.total }, // Pagination data from headers or response body
+        data: response.data.data,
+        pagination: { page, limit, total: response.data.total },
       };
     } catch (error) {
       return rejectWithValue(error);
@@ -95,10 +122,27 @@ const productsSlicer = createSlice({
       error: action.payload,
       loading: false,
     }),
-    [getNewProducts.pending.type]: (state) => ({ ...state, loading: true }),
-    [getNewProducts.fulfilled.type]: (state, action) => ({
+    [getSimilarProducts.pending.type]: (state) => ({ ...state, loading: true }),
+    [getSimilarProducts.fulfilled.type]: (state, action) => ({
       ...state,
-      newProducts: action.payload.data.map((product: ProductResponse) => ({
+      similarProducts: action.payload.filter(
+        (product: ProductResponse) =>
+          product.category.id === state.currentProduct.category.id
+      ),
+      loading: false,
+    }),
+    [getSimilarProducts.rejected.type]: (state, action) => ({
+      ...state,
+      error: action.payload,
+      loading: false,
+    }),
+    [getProductsBySearch.pending.type]: (state) => ({
+      ...state,
+      loading: true,
+    }),
+    [getProductsBySearch.fulfilled.type]: (state, action) => ({
+      ...state,
+      searchedProducts: action.payload.data.map((product: ProductResponse) => ({
         id: product.id,
         name: product.name,
         price: product.price,
@@ -113,7 +157,7 @@ const productsSlicer = createSlice({
       pagination: action.payload.pagination,
       loading: false,
     }),
-    [getNewProducts.rejected.type]: (state, action) => ({
+    [getProductsBySearch.rejected.type]: (state, action) => ({
       ...state,
       error: action.payload,
       loading: false,

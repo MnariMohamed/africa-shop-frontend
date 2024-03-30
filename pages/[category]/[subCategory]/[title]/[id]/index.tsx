@@ -7,7 +7,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store";
 import { useDispatch } from "react-redux";
-import { setProduct } from "@/store/api";
+import { getSimilarProducts, setProduct } from "@/store/api";
 
 const ProductDetailsPage: NextPage<{
   product: IProduct;
@@ -18,9 +18,13 @@ const ProductDetailsPage: NextPage<{
 
   useEffect(() => {
     if (!currentProduct || currentProduct.id !== product.id) {
-      dispatch(setProduct(product));
+      dispatch(setProduct(product)); /* <== check here */
     }
   }, [product, dispatch, currentProduct]);
+
+  useEffect(() => {
+    dispatch(getSimilarProducts());
+  }, [product, dispatch]);
 
   return (
     <div className="container mx-auto px-4 lg:mt-8">

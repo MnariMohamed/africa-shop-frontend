@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 
 const Brands = () => {
-  const slidesToScroll = brandContent.length;
   const { loading, brands } = useSelector((state: RootState) => state.brands);
 
   const settings = {
@@ -14,10 +13,10 @@ const Brands = () => {
     dots: true,
     infinite: true,
     autoplay: true,
-    speed: 15000, // Set the speed to a lower value for slower sliding
+    speed: 15000,
     slidesToShow: 8,
-    slidesToScroll: slidesToScroll,
-    autoplaySpeed: 8000, // Adjust autoplay speed as needed
+    slidesToScroll: brands.length, // Adjusted for dynamic sliding based on brands length
+    autoplaySpeed: 8000,
     cssEase: "linear",
     swipeToSlide: false,
     responsive: [

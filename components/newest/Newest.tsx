@@ -6,9 +6,7 @@ import Link from "next/link";
 import Card from "../UI/card/Card";
 import { IProduct } from "../../lib/types/products";
 import SectionTitle from "../UI/SectionTitle";
-import { useDispatch } from "react-redux";
-import { getNewProducts } from "@/store/api";
-import { AppDispatch, RootState } from "@/store";
+import { RootState } from "@/store";
 
 const Newest = () => {
   const { t } = useLanguage();
@@ -36,7 +34,7 @@ const Newest = () => {
       </div>
 
       <div className="text-center">
-        <Link href="/newestProducts">
+        <Link href="/offers">
           <span className="inline-block py-3 px-8 md:px-12 mt-4 text-sm md:text-base bg-palette-primary text-palette-side rounded-xl shadow-lg">
             {t.seeAllNewProducts}
           </span>

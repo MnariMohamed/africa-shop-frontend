@@ -8,18 +8,15 @@ interface Props {
 }
 const BrandBox: React.FC<Props> = ({ brandName, imageSrc, loading }) => {
   return (
-    <div className="relative flex items-center p-2 shadow-md lg:shadow-xl">
-      {" "}
-      {/* Adjust width and height as needed */}
+    <div className="relative flex items-center" style={{ height: "150px" }}>
       <Image
         src={imageSrc}
         alt={brandName}
         layout="responsive"
-        width={300}
-        height={175}
+        width={200} // Changed to make the image more rectangular
+        height={150} // Adjusted to maintain the desired aspect ratio
         style={{ objectFit: "cover" }}
       />
-      <div className="absolute dark:inset-0 dark:bg-slate-800/40"></div>
     </div>
   );
 };

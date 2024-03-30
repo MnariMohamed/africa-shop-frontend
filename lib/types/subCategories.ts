@@ -5,7 +5,9 @@
 } */
 
 export interface ICategory {
-  category: string;
-  icon: string;
+  id: string;
+  name: string;
+  icon?: string | null;
+  level?: number;
   subCategories?: ICategory[] | undefined;
 }

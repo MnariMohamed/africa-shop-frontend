@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import specialOfferProductsReducer from "./specialOfferProducts-slice";
-import newestProductReducer from "./newestProduct-slice";
 import SortedProductsListReducer from "./sortedProductList-slice";
 import cartUiReducer from "./cartUI-slice";
 import sideNavBarReducer from "./sideNavBar-slice";
@@ -17,7 +16,6 @@ import slidersReducer from "./api/slidersSlice";
 const store = configureStore({
   reducer: {
     specialOfferProductsList: specialOfferProductsReducer,
-    newestProductsList: newestProductReducer,
     sortedProductsList: SortedProductsListReducer,
     cartUi: cartUiReducer,
     userInfo: userInfoReducer,

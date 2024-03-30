@@ -10,6 +10,8 @@ import { useRouter } from "next/router";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { IActiveMenuItemRootState } from "../../../lib/types/activeMenuItem";
 import { GoLinkExternal } from "react-icons/go";
+import { RootState } from "@/store";
+import Image from "next/image";
 
 interface Props {
   onClick?: (
@@ -31,6 +33,8 @@ const MenuItems: React.FC<Props> = (props) => {
   const { width } = useWindowDimensions();
   const ArrowDirection = HiChevronRight;
 
+  const { subCatList } = useSelector((state: RootState) => state.sideNavBar);
+
   function onMenuItemClickHandler(
     subCategories: ICategory[] | undefined,
     category: string,
@@ -45,16 +49,14 @@ const MenuItems: React.FC<Props> = (props) => {
       state.activeMenuItem.activeMenuItemIndex
   );
 
-  const firstData = menuItems.slice(0, 18);
-
   return (
     <div className="flex items-center flex-col">
       <ul className="rounded-lg w-full pl-4">
-        {firstData.map((item, index) => {
+        {subCatList.map((item, index) => {
           return (
             <li
               className="py-3 md:py-2 transition-color duration-300 hover:text-palette-primary font-bold border-b-[0.5px] border-gray-700"
-              key={item.category}
+              key={item.name}
             >
               <div
                 className={`flex items-center mt-3 px-5 cursor-pointer text-sm ${
@@ -64,7 +66,7 @@ const MenuItems: React.FC<Props> = (props) => {
                   onMenuItemClickHandler(
                     item.subCategories ||
                       [] /* if no data in subcategories - it's a single product page */,
-                    item.category,
+                    item.name,
                     index
                   )
                 }
@@ -72,11 +74,19 @@ const MenuItems: React.FC<Props> = (props) => {
                   props.onMouseOver?.(
                     item.subCategories || [],
                     index,
-                    item.category
+                    item.name
                   )
                 }
               >
-                <item.icon className="w-5 h-5" />
+                {item.icon ? (
+                  <Image
+                    alt={item.name}
+                    height={25}
+                    width={25}
+                    src={item.icon}
+                    style={{ objectFit: "cover" }}
+                  />
+                ) : null}
                 <div className="mx-4 grow">
                   <span
                     className={`text-black font-bold text-sm ${
@@ -87,7 +97,7 @@ const MenuItems: React.FC<Props> = (props) => {
                         : ""
                     }`}
                   >
-                    {t[item.category]}
+                    {item.name}
                   </span>
                   {item.subCategories && (
                     <span className="text-slate-700 text-xs	font-light ml-2">

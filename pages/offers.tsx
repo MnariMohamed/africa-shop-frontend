@@ -7,19 +7,17 @@ import { RootState } from "@/store";
 import axios from "axios";
 import { Ip_port } from "@/constants";
 
-const Offers: NextPage<{
-  products: IProduct[];
-}> = ({ products }) => {
+const offers: NextPage = () => {
   return (
     <div>
-      <ProductList productList={products} />
+      <ProductList />
     </div>
   );
 };
 
-export default Offers;
+export default offers;
 
-export const getStaticProps: GetStaticProps = async () => {
+/* export const getStaticProps: GetStaticProps = async () => {
   const PRODUCTS_URL = `${Ip_port.Adresse}/api/products?join=images&join=category`;
 
   try {
@@ -40,4 +38,4 @@ export const getStaticProps: GetStaticProps = async () => {
       },
     };
   }
-};
+}; */
