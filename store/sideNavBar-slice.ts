@@ -78,14 +78,15 @@ const sideNavBarSlice = createSlice({
       subCatList: action.payload.map((item: any) => ({
         id: item.id,
         name: item.name,
-        icon: item.icon.path,
-        subCategories: item.subCategories.map((sub: any) => ({
-          id: sub.id,
-          name: sub.name,
-          icon: sub.icon,
-          level: sub.level,
-          subCategories: sub.subCategories || undefined,
-        })),
+        icon: item?.icon?.path,
+        subCategories:
+          item.subCategories?.map((sub: any) => ({
+            id: sub.id,
+            name: sub.name,
+            icon: sub.icon,
+            level: sub.level,
+            subCategories: sub.subCategories || undefined,
+          })) || [],
         level: item.level,
       })),
       loading: false,
