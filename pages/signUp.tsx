@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { Ip_port } from "@/constants";
 import { AppDispatch } from "@/store";
+
 const SignUp: NextPage = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();

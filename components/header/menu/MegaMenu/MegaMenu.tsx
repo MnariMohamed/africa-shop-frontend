@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { megaMenuActions } from "../../../../store/megaMenu-slice";
 import { Transition } from "react-transition-group";
 import { useLanguage } from "../../../../hooks/useLanguage";
-import { GoGrabber } from "react-icons/go";
-import MenusContainer from "./MenusContainer";
 import { IMegaMenuRootState } from "../../../../lib/types/megaMenu";
 
 const MegaMenu = () => {
