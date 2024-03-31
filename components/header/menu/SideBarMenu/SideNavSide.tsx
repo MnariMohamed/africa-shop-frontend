@@ -117,7 +117,7 @@ const SideNavSide = () => {
                         className={`py-3 transition-color duration-300 hover:bg-gray-200 font-bold border-b-[0.5px] border-gray-700
                         ${index === 0 && "border-t-[0.5px]"}
                         `}
-                        key={item.category}
+                        key={item.name}
                       >
                         <div
                           className="flex items-center px-5 cursor-pointer text-sm"
@@ -125,7 +125,7 @@ const SideNavSide = () => {
                             openNextSideBar(
                               item.subCategories ||
                                 [] /* if no data in subcategories - it's a single product page */,
-                              item.category,
+                              item.name,
                               index
                             )
                           }
@@ -137,7 +137,7 @@ const SideNavSide = () => {
                                 !item.subCategories ? "text-gray-400" : ""
                               }`}
                             >
-                              {t[item.category]}
+                              {t[item.name]}
                             </span>
                             {item.subCategories && (
                               <span className="text-slate-700 text-xs	font-light ml-2">

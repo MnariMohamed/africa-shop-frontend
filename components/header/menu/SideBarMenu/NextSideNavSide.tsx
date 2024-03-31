@@ -125,7 +125,7 @@ const SubCategoriesItems = () => {
                                 !item.subCategories ? "text-gray-400" : ""
                               }`}
                             >
-                              {t[item.category]}
+                              {t[item.name]}
                             </span>
                             {item.subCategories && (
                               <span className="text-slate-700 text-xs	font-light ml-2">
