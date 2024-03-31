@@ -17,6 +17,7 @@ const Breadcrumb = () => {
   const { t } = useLanguage();
   const router = useRouter();
   const [breadcrumbs, setBreadcrumbs] = useState<IBreadcrumb[] | []>([]);
+
   useEffect(() => {
     if (router) {
       const paths = router.asPath.split("/");
@@ -43,7 +44,7 @@ const Breadcrumb = () => {
         <ul className="flex items-center space-x-1 md:space-x-3">
           <li className="cursor-pointer">
             <Link href="/">
-              <div className="flex pr-2">
+              <div className="flex pr-1">
                 <span>
                   <BsShop style={{ fontSize: "1.2rem" }} />
                 </span>
@@ -55,12 +56,10 @@ const Breadcrumb = () => {
             return (
               <li className="flex items-center" key={breadcrumb.href}>
                 <span>/</span>
-                <Link href={breadcrumb.href}>
-                  <a className="inline-block px-2">
-                    {t[convertBreadcrumb(breadcrumb.breadcrumb)]
-                      ? t[convertBreadcrumb(breadcrumb.breadcrumb)]
-                      : convertBreadcrumb(breadcrumb.breadcrumb)}
-                  </a>
+                <Link href={breadcrumb.href} className="inline-block px-2">
+                  {t[convertBreadcrumb(breadcrumb.breadcrumb)]
+                    ? t[convertBreadcrumb(breadcrumb.breadcrumb)]
+                    : convertBreadcrumb(breadcrumb.breadcrumb)}
                 </Link>
               </li>
             );

@@ -43,11 +43,11 @@ const Input = React.forwardRef<IImperativeHandler, Props>((props, ref) => {
   return (
     <div className="relative mb-8">
       <label
-        className="absolute -top-[30%] ltr:left-3 rtl:right-3 bg-palette-card p-[0.3rem] whitespace-nowrap"
+        className="absolute -top-[30%] left-3 bg-palette-card p-[0.3rem] whitespace-nowrap"
         htmlFor={props.id}
       >
         {props.required ? (
-          <span className="text-rose-700 mx-1 mt-1">*</span>
+          <span className="mx-1 mt-1 text-red-500">*</span>
         ) : null}
         {t[`${props.id}`]}
       </label>

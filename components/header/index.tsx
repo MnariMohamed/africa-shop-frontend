@@ -1,17 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Menu from "./menu";
 import Logo from "./Logo";
 import Settings from "./Settings";
 import SearchBar from "./SearchBar";
 import CartIcon from "../cart/CartIcon";
-import Language from "./language/Language";
 
-const Theme = dynamic(() => import("./theme/Theme"), {
+const UserBox = dynamic(() => import("./user"), {
   ssr: false,
 });
 
-const index = () => {
+const Header = () => {
   return (
     <header className="md:fixed left-0 right-0 top-0 md:bg-palette-fill shadow-sm pt-4 z-[1000]">
       <div className="flex flex-col">
@@ -35,8 +34,8 @@ const index = () => {
           <div className="flex-grow">
             <SearchBar />
           </div>
-          <div className="ltr:ml-2 mr-2 sm:ltr:ml-4 flex items-center justify-between ">
-            {/* <UserBox /> */}
+          <div className="ml-2 mr-2 sm:ml-4 flex items-center justify-between ">
+            <UserBox />
             <CartIcon />
           </div>
         </div>
@@ -45,4 +44,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Header;

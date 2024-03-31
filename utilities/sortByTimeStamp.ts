@@ -19,7 +19,7 @@ export const newestProductsFn = (products: IProduct[]) => {
   const productsWithTimeStamp = products.map((product) => {
     return {
       ...product,
-      timeStamp: getTimeStamp(product.registerDate!),
+      timeStamp: getTimeStamp(product.createdAt!),
     };
   });
   return productsWithTimeStamp.sort(sortByTimeStamp);

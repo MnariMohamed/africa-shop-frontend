@@ -2,17 +2,23 @@ import React from "react";
 import BrandBox from "./BrandBox";
 import { brandContent } from "../../mock/brand";
 import Slider from "react-slick";
-import SectionTitle from "../UI/SectionTitle";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
+
 const Brands = () => {
+  const { loading, brands } = useSelector((state: RootState) => state.brands);
+
   const settings = {
+    useTransform: true,
+    dots: true,
     infinite: true,
-    speed: 6000,
-    slidesToShow: 8,
-    slidesToScroll: 4,
     autoplay: true,
+    speed: 15000,
+    slidesToShow: 8,
+    slidesToScroll: brands.length, // Adjusted for dynamic sliding based on brands length
     autoplaySpeed: 8000,
     cssEase: "linear",
-    swipeToSlide: true,
+    swipeToSlide: false,
     responsive: [
       {
         breakpoint: 1024,
@@ -37,16 +43,17 @@ const Brands = () => {
       },
     ],
   };
+
   return (
-    <div className="p-1 my-4 md:my-8 text-center">
-      {/*       <SectionTitle title={"popularBrands"} />*/}{" "}
+    <div className="md:p-1 my-2 mx-2 md:mx-0">
       <Slider {...settings}>
-        {brandContent.map((brandItem) => {
+        {brands.map((brandItem) => {
           return (
             <BrandBox
               key={brandItem.id}
               brandName={brandItem.name}
-              imageSrc={brandItem.imgSrc}
+              imageSrc={brandItem.logo}
+              loading={loading}
             />
           );
         })}
