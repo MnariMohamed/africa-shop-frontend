@@ -11,8 +11,6 @@ const WelcomeSection: React.FC<Props> = ({ user }) => {
 
   const name = user?.firstName;
 
-  console.log("user", user);
-
   return (
     <section className="welcome-section bg-gradient-to-r from-palette-primary to-palette-secondary text-white py-8 px-4 md:px-6 rounded-lg shadow-md mb-8 md:mt-4">
       <div className="max-w-2xl mx-auto">

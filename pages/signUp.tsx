@@ -38,7 +38,6 @@ const SignUp: NextPage = () => {
       );
 
       const data = response.data;
-      console.log("userRes", response);
 
       if (data && response.status === 201) {
         const user = {
